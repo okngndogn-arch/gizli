@@ -1667,15 +1667,54 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     g.fillStyle = "#ffd23f"; g.fillRect(0, 0, w, h); g.fillStyle = "#3d2a8a"; g.fillRect(5, 5, w - 10, h - 10);
     g.fillStyle = "#ffd23f"; g.font = "800 40px 'Baloo 2', Nunito, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("TÜNEL", w / 2, h / 2 + 3);
   });
+  const poolGeo = new THREE.PlaneGeometry(10, 12);
+  const poolM = new THREE.MeshBasicMaterial({ map: dotTex, color: 0xffd98a, transparent: true, opacity: 0.38, depthWrite: false, blending: THREE.AdditiveBlending });
+  const haloMats = {}, dotMats = {};
+  function glowDot(parent, x, y, z, color, size) {
+    if (!dotMats[color]) { dotMats[color] = new THREE.MeshBasicMaterial({ color }); haloMats[color] = new THREE.SpriteMaterial({ map: dotTex, color, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.85 }); }
+    const m = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 6), dotMats[color]); m.position.set(x, y, z); parent.add(m);
+    const h = new THREE.Sprite(haloMats[color]); h.scale.setScalar(size); m.add(h);
+    return m;
+  }
+  // tünelde engeller ışıl ışıl: neon şeritler, farlar, yanıp sönen lambalar
+  const neonMats = [0x2bfff0, 0xff4fd8, 0xffd23f, 0x7dff6a].map(c => new THREE.MeshBasicMaterial({ color: c }));
+  function neon(parent, w, h, d, x, y, z, mat) { const m = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat); m.position.set(x, y, z); parent.add(m); return m; }
+  function lightUp(o) {
+    o.lit = true; o.blink = [];
+    const g = o.mesh, nm = pick(neonMats);
+    if (o.type === "barrier") {
+      neon(g, 1.98, 0.07, 0.2, 0, o.mover ? 1.4 : 1.47, 0, nm);
+      neon(g, 1.98, 0.07, 0.2, 0, o.mover ? 0.52 : 0.33, 0, nm);
+      if (!o.mover) for (const s of [-1, 1]) o.blink.push(glowDot(g, s * 0.88, 1.78, 0.12, 0xff5f3d, 1.4));
+    } else if (o.type === "bar") {
+      neon(g, 2.1, 0.07, 0.36, 0, 3.38, 0, nm);
+      for (const y of [1.77, 2.93]) neon(g, 1.86, 0.06, 0.16, 0, y, 0.02, nm);
+      for (const s of [-1, 1]) o.blink.push(glowDot(g, s * 0.98, 3.78, 0, 0xff5f3d, 1.4));
+    } else if (o.type === "train") {
+      for (const c of g.children) {
+        if (!c.isGroup) continue;
+        for (const sx of [-0.96, 0.96]) { neon(c, 0.05, 0.09, 3.9, sx, 0.95, 0, nm); neon(c, 0.05, 0.07, 4.0, sx * 1.04, 3.33, 0, nm); }
+      }
+      for (const s of [-1, 1]) { glowDot(g, s * 0.6, 1.1, o.len / 2 + 0.06, 0xfff6d0, 1.8); o.blink.push(glowDot(g, s * 0.78, 3.0, o.len / 2 + 0.06, 0xff3d3d, 1.1)); }
+    } else if (o.type === "ramp") {
+      for (const s of [-1, 1]) { const r = neon(g, 0.07, 0.07, 4.3, s * 0.92, 1.92, -2, nm); r.rotation.x = Math.atan2(3.3, 4); }
+    }
+  }
   function makeTunnel(zNear, len) {
     const g = new THREE.Group();
     const wallM = M(0xffffff, { map: brickTex.clone() }); wallM.map.needsUpdate = true; wallM.map.repeat.set(Math.round(len / 3), 3);
     for (const s of [-1, 1]) {
       const wall = new THREE.Mesh(new THREE.BoxGeometry(0.8, TH, len), wallM); wall.position.set(s * (TW + 0.4), TH / 2, 0); g.add(wall);
-      const strip = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, len - 2), tunLightM); strip.position.set(s * (TW - 0.06), 5.4, 0); g.add(strip);
     }
     const roof = new THREE.Mesh(new THREE.BoxGeometry(2 * TW + 1.6, 0.8, len), tunRoofM); roof.position.y = TH + 0.4; g.add(roof);
-    for (let zz = -len / 2 + 2; zz < len / 2 - 1; zz += 6) { const l = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.12, 0.5), tunLightM); l.position.set(0, TH - 0.05, zz); g.add(l); }
+    // ara ara aydınlatma: tavan lambası, duvar lambaları ve yerde ışık havuzu
+    const lamps = [];
+    for (let zz = len / 2 - 10; zz > -len / 2 + 6; zz -= rnd(28, 38)) {
+      lamps.push(zz);
+      const fx = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.16, 0.9), tunLightM); fx.position.set(0, TH - 0.08, zz); g.add(fx);
+      for (const s of [-1, 1]) glowDot(g, s * (TW - 0.15), 5.2, zz, 0xffd27a, 2.6);
+      const pool = new THREE.Mesh(poolGeo, poolM); pool.rotation.x = -Math.PI / 2; pool.position.set(0, 0.3, zz); g.add(pool);
+    }
     for (const e of [1, -1]) {
       const a = new THREE.Mesh(archGeo, portalM); a.position.z = e * (len / 2); g.add(a);
       const top = new THREE.Mesh(new THREE.BoxGeometry(2 * TW + 3.6, 0.5, 1.6), M(0x7b5cd6)); top.position.set(0, TH + 2.85, e * (len / 2)); g.add(top);
@@ -1683,7 +1722,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     const sign = new THREE.Mesh(new THREE.PlaneGeometry(4.4, 1.1), M(0xffffff, { map: tunSignTex })); sign.position.set(0, TH + 1.55, len / 2 + 0.62); g.add(sign);
     shadowAll(g, true, true);
     g.traverse(m => { if (m.isMesh && (m.material === tunLightM)) m.castShadow = false; });
-    const o = { type: "tunnel", decor: true, lane: 99, z: zNear - len / 2, len, mesh: g };
+    const o = { type: "tunnel", decor: true, lane: 99, z: zNear - len / 2, len, mesh: g, lamps };
     g.position.set(0, 0, o.z); scene.add(g); obstacles.push(o);
   }
   const waterTex = canvasTex(128, 128, (g, w, h) => {
@@ -1750,7 +1789,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     const used = spawnCore(z);
     const covered = coveredBy(z + 4, z - used - 4);
     if (covered) lastSecTunnel = covered === "tunnel";
-    else if (sectionsMade > 4 && P.rocket <= 0 && k > 0.88) { makeTunnel(z + 3, Math.round(rnd(80, 140))); lastSecTunnel = true; }
+    else if (sectionsMade > 4 && P.rocket <= 0 && k > 0.96) { makeTunnel(z + 3, Math.round(rnd(150, 230))); lastSecTunnel = true; }
     else if (sectionsMade > 3 && k > 0.8 && k <= 0.88) makeRiver(z - used / 2 + 9, 18);
     return used;
   }
@@ -2774,7 +2813,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (!tut.board && !boardHintShown && playTime > 14 && P.boardUses > 0 && P.board <= 0 && P.rocket <= 0) { boardHintShown = true; showCoach("board"); }
   }
 
-  let tunF = 0; const TUN_FOG = new THREE.Color(0x0c0a1c);
+  let tunF = 0, lampK = 0; const TUN_FOG = new THREE.Color(0x05040c);
   let lastGround = true, dustT = 0, noHitT = 0, wasOnTop = false;
   function update(dt) {
     time += dt;
@@ -2788,9 +2827,12 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     dist += dz;
 
     // dünya hareketi
-    let inTunnel = false;
+    let inTunnel = false, lampF = 0;
+    const tuns = obstacles.filter(o => o.type === "tunnel");
     for (let i = obstacles.length - 1; i >= 0; i--) {
       const o = obstacles[i]; o.z += dz;
+      if (!o.decor && !o.lit && tuns.some(t => o.z < t.z + t.len / 2 + 2 && o.z > t.z - t.len / 2 - 2)) lightUp(o);
+      if (o.blink) for (let b = 0; b < o.blink.length; b++) o.blink[b].visible = Math.sin(time * 7 + b * Math.PI) > 0;
       if (o.vz && o.z > -80 && !falling) {
         if (!o.moving) { o.moving = true; if (live) sfx.horn(); }
         o.z += o.vz * dt;
@@ -2801,7 +2843,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
         o.mesh.children.forEach(c => { if (c.material === beaconM) c.visible = Math.sin(time * 12) > 0; });
       }
       if (o.type === "tunnel") {
-        if (o.z - o.len / 2 < 1 && o.z + o.len / 2 > -1) inTunnel = true;
+        if (o.z - o.len / 2 < 1 && o.z + o.len / 2 > -1) { inTunnel = true; for (const lz of o.lamps) { const f = Math.max(0, 1 - Math.abs(o.z + lz) / 5.5); lampF = Math.max(lampF, f * f); } }
         if (!o.passed && o.z - o.len / 2 > 0.5) { o.passed = true; questEvent("tunnel", 1); }
       }
       if (o.type === "river") o.mesh.children.forEach(c => { if (c.userData.bob !== undefined) { c.position.y = 0.08 + Math.sin(time * 2.5 + c.userData.bob) * 0.05; c.rotation.y += dt * 0.3; } });
@@ -2810,10 +2852,12 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     }
     waterTex.offset.x += dt * 0.04;
     tunF += ((inTunnel ? 1 : 0) - tunF) * Math.min(1, dt * 3);
-    hemi.intensity = curTheme.hemi[2] * (1 - 0.88 * tunF);
-    sun.intensity = curTheme.sun[1] * (1 - 0.92 * tunF);
-    scene.fog.color.setHex(curTheme.fog).lerp(TUN_FOG, tunF * 0.92);
-    scene.fog.near = curTheme.fogNear * (1 - 0.6 * tunF); scene.fog.far = curTheme.fogFar * (1 - 0.35 * tunF);
+    lampK += (Math.max(0, lampF) - lampK) * Math.min(1, dt * 6);
+    const dark = tunF * (1 - 0.5 * lampK);
+    hemi.intensity = curTheme.hemi[2] * (1 - 0.93 * dark);
+    sun.intensity = curTheme.sun[1] * (1 - 0.97 * dark);
+    scene.fog.color.setHex(curTheme.fog).lerp(TUN_FOG, tunF * 0.97);
+    scene.fog.near = curTheme.fogNear * (1 - 0.8 * tunF); scene.fog.far = curTheme.fogFar * (1 - 0.5 * tunF);
     const magOn = P.magnet > 0 && !falling;
     for (let i = coins.length - 1; i >= 0; i--) {
       const c = coins[i]; c.z += dz;

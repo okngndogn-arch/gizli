@@ -11,7 +11,7 @@ Oyunun tamamı tek bir dosyada: `index.html`. 3D çizim için [Three.js](https:/
 
 ## Android uygulaması (APK)
 
-Hazır APK: [`apk/Rayzgar-1.2.apk`](apk/Rayzgar-1.2.apk). Dosyayı telefona indirip aç. Android "bilinmeyen kaynaklardan yükleme" izni isteyebilir. Uygulama internet bağlantısı olmadan çalışır.
+Hazır APK: [`apk/Rayzgar-1.3.apk`](apk/Rayzgar-1.3.apk). Dosyayı telefona indirip aç. Android "bilinmeyen kaynaklardan yükleme" izni isteyebilir. Uygulama internet bağlantısı olmadan çalışır.
 
 `android/` klasörü uygulamanın kaynağıdır: oyunu tam ekran bir WebView'de açan küçük bir Android uygulaması. `android/assets/www/index.html`, oyunun internetsiz sürümüdür (Three.js ve yazı tipleri içine konmuştur). Gradle gerekmez, doğrudan Android SDK araçlarıyla derlenir:
 
@@ -36,7 +36,7 @@ Gerekenler: Java 17+, Android SDK `platforms;android-34` ve `build-tools;34.0.0`
 - Her koşucunun kendine has bir yeteneği (örneğin Mırmır daha yükseğe zıplar, Pırıl koşuya kalkanla başlar)
 - Güçlendirmeler: roket, mıknatıs, kaykay, 2 kat puan, kalkan ve süper zıplama
 - İçinden altın, güçlendirme ya da kaykay hakkı çıkan sürpriz kutular
-- Uzun karanlık tüneller, nehir köprüleri, karşıdan gelen vagonlar ve şeritler arasında gidip gelen bariyerler
+- Uzun, karanlık ve içinde neon ışıklı engeller olan tüneller, nehir köprüleri, karşıdan gelen vagonlar ve şeritler arasında gidip gelen bariyerler
 - 7 günlük günlük ödül takvimi, her gün yenilenen 3 görev ve 20 kalıcı rozet
 - Her dünyanın kendi müziği; ses, müzik ve titreşim ayarları
 - İlk oyunda ağır çekimli, el animasyonlu rehber
