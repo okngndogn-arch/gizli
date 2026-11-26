@@ -393,6 +393,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       <div class="card">
         <h2>Mola</h2>
         <button class="big-btn" id="resumeBtn">Devam</button>
+        <button class="pill-btn wide" id="menuBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5L12 4l9 7.5" stroke="#3a4790" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v9.5h5v-5.5h3v5.5h5V10" fill="#3a4790"/></svg>Ana Menü</button>
         <button class="pill-btn wide" id="pauseSet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm9 4.6v-2.2l-2.4-.6a7 7 0 0 0-.7-1.7l1.3-2.1-1.6-1.6-2.1 1.3a7 7 0 0 0-1.7-.7L13.1 3h-2.2l-.6 2.4a7 7 0 0 0-1.7.7L6.5 4.8 4.9 6.4l1.3 2.1a7 7 0 0 0-.7 1.7L3 10.9v2.2l2.4.6c.2.6.4 1.2.7 1.7l-1.3 2.1 1.6 1.6 2.1-1.3c.5.3 1.1.6 1.7.7l.6 2.5h2.2l.6-2.4a7 7 0 0 0 1.7-.7l2.1 1.3 1.6-1.6-1.3-2.1c.3-.5.6-1.1.7-1.7z" fill="#3a4790"/></svg>Ayarlar</button>
       </div>
     </div>
@@ -470,6 +471,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
         <p class="best" id="bestLine">En iyi skor: 0</p>
         <button class="big-btn alt" id="contBtn">Bir Şans Daha</button>
         <button class="big-btn" id="againBtn">Tekrar Oyna</button>
+        <button class="pill-btn wide" id="menuBtn2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5L12 4l9 7.5" stroke="#3a4790" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v9.5h5v-5.5h3v5.5h5V10" fill="#3a4790"/></svg>Ana Menü</button>
         <button class="pill-btn wide" id="questBtn2"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="2.5" width="16" height="17" rx="3" fill="#3b6cff"/><path d="M6.5 8l1.6 1.6L11 6.6M6.5 14l1.6 1.6L11 12.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12.5" y="7.4" width="4" height="1.8" rx=".9" fill="#fff"/><rect x="12.5" y="13.4" width="4" height="1.8" rx=".9" fill="#fff"/></svg>Görevler<span class="dot" id="questDot2" hidden>0</span></button>
         <button class="big-btn shop" id="marketBtn2"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M2 3h3l2.4 10.5h10L20 6H6.2" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="18" r="1.9" fill="#ffffff"/><circle cx="16" cy="18" r="1.9" fill="#ffffff"/></svg>Market</button>
       </div>
@@ -1634,11 +1636,11 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
   function spawnOncoming(z) {
     const lanes = [-1, 0, 1], L = pick(lanes);
-    makeTrain(L, z - 28 - 2.1, 1);
-    const o = obstacles[obstacles.length - 1]; o.vz = 9; o.oncoming = true; addHeadlights(o);
+    makeTrain(L, z - 40 - 2.1, 1);
+    const o = obstacles[obstacles.length - 1]; o.vz = 17; o.oncoming = true; addHeadlights(o);
     const others = lanes.filter(l => l !== L);
-    coinLine(pick(others), z - 4, 9);
-    return 34;
+    coinLine(pick(others), z - 4, 12);
+    return 46;
   }
   function spawnMovers(z) {
     makeMover(z - 6, rnd(0, 6)); makeMover(z - 18, rnd(0, 6));
@@ -1673,7 +1675,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       const strip = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, len - 2), tunLightM); strip.position.set(s * (TW - 0.06), 5.4, 0); g.add(strip);
     }
     const roof = new THREE.Mesh(new THREE.BoxGeometry(2 * TW + 1.6, 0.8, len), tunRoofM); roof.position.y = TH + 0.4; g.add(roof);
-    for (let zz = -len / 2 + 2; zz < len / 2 - 1; zz += 4) { const l = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.12, 0.5), tunLightM); l.position.set(0, TH - 0.05, zz); g.add(l); }
+    for (let zz = -len / 2 + 2; zz < len / 2 - 1; zz += 6) { const l = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.12, 0.5), tunLightM); l.position.set(0, TH - 0.05, zz); g.add(l); }
     for (const e of [1, -1]) {
       const a = new THREE.Mesh(archGeo, portalM); a.position.z = e * (len / 2); g.add(a);
       const top = new THREE.Mesh(new THREE.BoxGeometry(2 * TW + 3.6, 0.5, 1.6), M(0x7b5cd6)); top.position.set(0, TH + 2.85, e * (len / 2)); g.add(top);
@@ -1746,9 +1748,16 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (sectionsMade > 3 && k < 0.09) return spawnOncoming(z);
     if (sectionsMade > 3 && k < 0.18) return spawnMovers(z);
     const used = spawnCore(z);
-    if (sectionsMade > 4 && P.rocket <= 0 && k > 0.89) { makeTunnel(z + 3, used + 6); lastSecTunnel = true; }
-    else if (sectionsMade > 3 && k > 0.8 && k <= 0.89) makeRiver(z - used / 2 + 9, 18);
+    const covered = coveredBy(z + 4, z - used - 4);
+    if (covered) lastSecTunnel = covered === "tunnel";
+    else if (sectionsMade > 4 && P.rocket <= 0 && k > 0.88) { makeTunnel(z + 3, Math.round(rnd(80, 140))); lastSecTunnel = true; }
+    else if (sectionsMade > 3 && k > 0.8 && k <= 0.88) makeRiver(z - used / 2 + 9, 18);
     return used;
+  }
+  // bu aralık bir tünel ya da nehirle çakışıyor mu?
+  function coveredBy(z0, z1) {
+    for (const o of obstacles) if (o.decor && z1 < o.z + o.len / 2 + 6 && z0 > o.z - o.len / 2 - 6) return o.type;
+    return null;
   }
   function spawnCore(z) {
     const lanes = [-1, 0, 1], L = pick(lanes);
@@ -1780,12 +1789,13 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     return (ramp ? 4 : 0) + len + 4;
   }
   function maybePickup(z, used) {
-    if (sectionsMade < 3 || P.rocket > 0 || lastSecTunnel || Math.random() > 0.24) return;
+    if (sectionsMade < 3 || P.rocket > 0 || Math.random() > 0.24) return;
     const free = [-1, 0, 1].filter(l => !obstacles.some(o => o.lane === l && o.type === "train" && o.z + o.len / 2 > z - used && o.z - o.len / 2 < z + 2));
     if (!free.length) return;
     const lane = pick(free);
     coins.forEach(c => { if (!c.taken && c.lane === lane && Math.abs(c.z - (z - 2)) < 1.2) { scene.remove(c.m); c.taken = true; c.t = 1; } });
     const r = Math.random();
+    if (lastSecTunnel && r < 0.18) return;
     addPickup(r < 0.18 ? "rocket" : r < 0.36 ? "magnet" : r < 0.53 ? "double" : r < 0.69 ? "shield" : r < 0.84 ? "shoes" : "box", lane, z - 2);
   }
   function fillWorld() { while (nextZ > -170) { const z = nextZ, used = spawnSection(z); maybePickup(z, used); nextZ -= used + rnd(8, 13); } }
@@ -2207,7 +2217,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     $("boardCnt").textContent = P.boardUses;
     $("boardBtn").disabled = P.boardUses <= 0 || P.board > 0 || state !== "play";
   }
-  function mult() { return 1 + Math.min(4, Math.floor(playTime / 20)); }
+  function mult() { return 1 + Math.min(12, Math.floor(playTime / 20)); }
   function scoreMult() { return mult() * (P.dbl > 0 ? 2 : 1); }
   function ensureAudio() {
     if (!actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
@@ -2253,6 +2263,22 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   function setPaused(v) { if (state !== "play") return; paused = v; $("pauseOv").hidden = !v; if (coachType) $("coach").hidden = v; }
   $("playBtn").addEventListener("click", startGame);
   $("againBtn").addEventListener("click", startGame);
+  function goMenu() {
+    if (state === "play" || state === "falling") {
+      questEvent("run_score", Math.floor(score), true); questEvent("run_coins", coinCount, true); questEvent("runs", 1, true);
+      bankCoins();
+      const s2 = Math.floor(score); if (s2 > best) { best = s2; try { localStorage.setItem("firtina-best", String(best)); } catch (e) {} }
+    }
+    saveQuests();
+    paused = false; hideCoach(); timeScale = 1;
+    state = "demo"; resetGame();
+    stage.classList.add("demo");
+    for (const id of ["pauseOv", "overOv", "setOv", "marketOv", "questOv", "achOv"]) $(id).hidden = true;
+    panelFrom = null; marketFrom = null;
+    $("startOv").hidden = false; updateRunnerLine(); updateBadges();
+  }
+  $("menuBtn").addEventListener("click", goMenu);
+  $("menuBtn2").addEventListener("click", goMenu);
   $("contBtn").addEventListener("click", continueRun);
   $("pauseBtn").addEventListener("click", () => setPaused(!paused));
   $("boardBtn").addEventListener("click", () => activateBoard());
@@ -2748,6 +2774,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (!tut.board && !boardHintShown && playTime > 14 && P.boardUses > 0 && P.board <= 0 && P.rocket <= 0) { boardHintShown = true; showCoach("board"); }
   }
 
+  let tunF = 0; const TUN_FOG = new THREE.Color(0x0c0a1c);
   let lastGround = true, dustT = 0, noHitT = 0, wasOnTop = false;
   function update(dt) {
     time += dt;
@@ -2764,7 +2791,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     let inTunnel = false;
     for (let i = obstacles.length - 1; i >= 0; i--) {
       const o = obstacles[i]; o.z += dz;
-      if (o.vz && o.z > -62 && !falling) {
+      if (o.vz && o.z > -80 && !falling) {
         if (!o.moving) { o.moving = true; if (live) sfx.horn(); }
         o.z += o.vz * dt;
         o.mesh.children.forEach(c => c.children.forEach(w => { if (w.geometry === wheelGeo) w.rotation.x -= dt * 14; }));
@@ -2782,7 +2809,11 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       if (o.z - o.len > 14) { scene.remove(o.mesh); obstacles.splice(i, 1); }
     }
     waterTex.offset.x += dt * 0.04;
-    hemi.intensity += ((inTunnel ? 0.55 : 1) * curTheme.hemi[2] - hemi.intensity) * Math.min(1, dt * 4);
+    tunF += ((inTunnel ? 1 : 0) - tunF) * Math.min(1, dt * 3);
+    hemi.intensity = curTheme.hemi[2] * (1 - 0.88 * tunF);
+    sun.intensity = curTheme.sun[1] * (1 - 0.92 * tunF);
+    scene.fog.color.setHex(curTheme.fog).lerp(TUN_FOG, tunF * 0.92);
+    scene.fog.near = curTheme.fogNear * (1 - 0.6 * tunF); scene.fog.far = curTheme.fogFar * (1 - 0.35 * tunF);
     const magOn = P.magnet > 0 && !falling;
     for (let i = coins.length - 1; i >= 0; i--) {
       const c = coins[i]; c.z += dz;
