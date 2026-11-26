@@ -9,6 +9,18 @@ Oyunun tamamı tek bir dosyada: `index.html`. 3D çizim için [Three.js](https:/
 - **Bilgisayarda:** `index.html` dosyasını bir tarayıcıda açman yeterli (internet bağlantısı gerekir).
 - **Telefonda:** GitHub Pages'i açıp linki telefonda kullan. Ayarlar → Pages → Branch: `main` / `(root)` → Save. Birkaç dakika sonra oyun `https://okngndogn-arch.github.io/gizli/` adresinde açılır.
 
+## Android uygulaması (APK)
+
+Hazır APK, deponun **Releases** bölümünde: en son sürümdeki `Rayzgar-1.0.apk` dosyasını telefona indirip aç. Android "bilinmeyen kaynaklardan yükleme" izni isteyebilir. Uygulama internet bağlantısı olmadan çalışır.
+
+`android/` klasörü uygulamanın kaynağıdır: oyunu tam ekran bir WebView'de açan küçük bir Android uygulaması. `android/assets/www/index.html`, oyunun internetsiz sürümüdür (Three.js ve yazı tipleri içine konmuştur). Gradle gerekmez, doğrudan Android SDK araçlarıyla derlenir:
+
+```bash
+ANDROID_HOME=/yol/android-sdk KS=/yol/rayzgar.jks KS_PASS=sifre ./android/build.sh
+```
+
+Gerekenler: Java 17+, Android SDK `platforms;android-34` ve `build-tools;34.0.0`. İmza anahtarı (`.jks`) depoya konmaz. Güncellemeler aynı anahtarla imzalanmalıdır, yoksa telefondaki uygulama güncellenemez.
+
 ## Kontroller
 
 | Hareket | Telefon | Bilgisayar |
