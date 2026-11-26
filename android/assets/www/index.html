@@ -81,11 +81,11 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
 }
 .coins.bump { transform: scale(1.14); }
 .coin-ico { width: 28px; height: 28px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff3a6, #ffd23f 45%, #e69500); box-shadow: inset 0 0 0 2px #b86f00; }
-.powers { position: absolute; left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 66px); display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding-inline: 70px; }
-.pchip { display: flex; align-items: center; gap: 6px; background: rgba(25, 22, 60, .68); border-radius: 18px; padding: 3px 10px 3px 3px; font: 800 13px/1 var(--font-body); }
+.powers { position: absolute; left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 66px); display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; padding-inline: 62px; }
+.pchip { display: flex; align-items: center; gap: 5px; background: rgba(25, 22, 60, .68); border-radius: 18px; padding: 3px 9px 3px 3px; font: 800 12px/1 var(--font-body); }
 .pchip .ico { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; }
 .pchip .ico svg { width: 18px; height: 18px; }
-.pchip .bar { width: 52px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.25); overflow: hidden; }
+.pchip .bar { width: 36px; height: 7px; border-radius: 4px; background: rgba(255,255,255,.25); overflow: hidden; }
 .pchip .bar i { display: block; height: 100%; width: 100%; border-radius: 4px; background: var(--mint); }
 .pchip.rocket .ico { background: #ff5f6d; } .pchip.rocket .bar i { background: #ffb347; }
 .pchip.board .ico { background: #ff8a3d; } .pchip.board .bar i { background: #ffd23f; }
@@ -225,7 +225,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   background: linear-gradient(#ffe066, #ffb000); color: #5a3300; border: 3px solid var(--gold-dark); box-shadow: 0 3px 0 var(--gold-dark); }
 .q-claim.big { width: 100%; justify-content: center; font-size: 19px; padding-block: 11px 9px; }
 .q-bonus { padding: 4px 16px 18px; font-size: 14px; font-weight: 700; color: #6d6a9c; text-align: center; }
-.toast { position: absolute; z-index: 4; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 112px); transform: translateX(-50%); max-width: calc(100% - 32px);
+.toast { position: absolute; z-index: 4; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 150px); transform: translateX(-50%); max-width: calc(100% - 32px);
   background: #2bd6a8; color: #063a2b; font: 800 15px/1.25 var(--font-display); padding: 8px 14px 6px; border-radius: 16px; border: 3px solid #fff; box-shadow: 0 6px 18px rgba(0,0,0,.25); text-align: center; pointer-events: none; }
 .toast.show { animation: toastIn 2.6s ease both; }
 @keyframes toastIn { 0% { opacity: 0; transform: translate(-50%, -10px) scale(.9); } 10%, 85% { opacity: 1; transform: translate(-50%, 0) scale(1); } 100% { opacity: 0; transform: translate(-50%, -6px); } }
@@ -242,7 +242,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
 .who { flex: 1; min-width: 0; display: grid; line-height: 1.1; }
 .who small { font-size: 10px; font-weight: 800; letter-spacing: .14em; opacity: .65; }
 .who b { font: 800 21px/1.1 var(--font-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.who em { font-style: normal; font-size: 13px; font-weight: 700; opacity: .8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.who em { font-style: normal; font-size: 12px; line-height: 1.2; font-weight: 700; opacity: .85; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 1px; }
 .chev { width: 9px; height: 15px; flex: none; opacity: .55; margin-right: 2px; }
 .bank { flex: none; display: flex; align-items: center; gap: 8px; padding: 7px 12px 7px 8px; border-radius: 17px; background: linear-gradient(#ffe27a, #ffb000); color: #5a3300; box-shadow: inset 0 -3px 0 rgba(138,82,0,.35); }
 .bank .coin-ico { width: 30px; height: 30px; box-shadow: inset 0 0 0 2px #b86f00, 0 2px 0 rgba(138,82,0,.4); }
@@ -286,11 +286,44 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
 @keyframes hSide { 0%, 100% { transform: translateX(-40px) rotate(-10deg); } 50% { transform: translateX(40px) rotate(10deg); } }
 @keyframes hTap { 0%, 40%, 100% { transform: scale(1); } 20%, 60% { transform: scale(.82); } }
 @media (prefers-reduced-motion: reduce) { .g-ico .tip, .g-ico .ring, .coach-hand, .coach-card { animation: none !important; } }
+.pchip.dbl .ico { background: #ffb000; } .pchip.dbl .bar i { background: #ffe066; }
+.pchip.dbl .ico b { font: 800 13px/1 var(--font-display); color: #fff; }
+.pchip.shield .ico { background: #14b892; } .pchip.shield .bar i { background: #8ff4c8; }
+.pchip.shoes .ico { background: #7b5cd6; } .pchip.shoes .bar i { background: #c3a6ff; }
+.mult.dbl { color: #ffe066; -webkit-text-stroke-color: #8a5200; text-shadow: 0 3px 0 #8a5200; }
+.pill-row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: min(340px, 100%); }
+.pill-row3 .pill-btn { flex-direction: column; gap: 3px; padding: 8px 4px 6px; font-size: 15px; }
+.pill-row3 .pill-btn svg { width: 26px; height: 26px; }
+.gear-btn { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 12px); right: calc(env(safe-area-inset-right, 0px) + 12px); }
+.gear-btn svg { width: 24px; height: 24px; }
+.char .abil { font-size: 11px; font-weight: 800; line-height: 1.2; color: #6b4cd6; background: #f0eaff; border-radius: 8px; padding: 3px 6px; margin-top: 3px; }
+.ach { display: flex; align-items: center; gap: 10px; background: #f6f3ff; border: 3px solid #e6e1fa; border-radius: 18px; padding: 10px 12px; text-align: left; }
+.ach.done { border-color: #ffd23f; background: #fffbea; }
+.ach.got { opacity: .7; }
+.medal { width: 46px; height: 46px; flex: none; display: grid; place-items: center; }
+.medal svg { width: 100%; height: 100%; }
+.ach.locked .medal { filter: grayscale(1); opacity: .45; }
+.ach-sum { display: flex; align-items: center; gap: 10px; margin: 0 16px 10px; padding: 10px 14px; border-radius: 16px; background: linear-gradient(90deg, #fff6d6, #ffe9a6); font-weight: 800; color: #5a3300; }
+.ach-sum .q-bar { flex: 1; background: rgba(138,82,0,.15); }
+.ach-sum .q-bar i { background: linear-gradient(90deg, #ffb000, #ffe066); }
+.set-list { display: grid; gap: 10px; padding: 6px 16px 18px; }
+.set-row { display: flex; align-items: center; gap: 12px; background: #f6f3ff; border: 3px solid #e6e1fa; border-radius: 18px; padding: 10px 12px 10px 10px; font: 800 18px/1.1 var(--font-display); text-align: left; }
+.set-row .s-ico { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; flex: none; }
+.set-row .s-ico svg { width: 24px; height: 24px; }
+.set-row span.lbl { flex: 1; }
+.set-row small { display: block; font: 700 12px/1.2 var(--font-body); color: #6d6a9c; margin-top: 2px; }
+.sw { width: 60px; height: 34px; flex: none; border-radius: 17px; background: #d6d0ee; border: 0; position: relative; cursor: pointer; transition: background .2s; padding: 0; }
+.sw::after { content: ""; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: #fff; transition: transform .2s; box-shadow: 0 2px 0 rgba(0,0,0,.18); }
+.sw[aria-pressed="true"] { background: var(--mint); }
+.sw[aria-pressed="true"]::after { transform: translateX(26px); }
+.sw:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+.set-list .pill-btn.wide { border-color: #d6d0ee; box-shadow: 0 4px 0 #d6d0ee; background: #fff; }
+.toast.gold { background: #ffd23f; color: #5a3300; }
+.toast.purple { background: #b48cff; color: #24124f; }
+.card .pill-btn.wide { margin-top: 2px; }
 .loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); font: 800 20px var(--font-display); z-index: 1; }
 </style>
-<style>body { margin: 0; font-size: 14px; }</style>
-</head>
-<body>
+
 <div class="page">
   <div id="stage" class="stage demo">
     <div class="loading" id="loading">Yükleniyor…</div>
@@ -308,6 +341,9 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
         <div class="pchip rocket" id="chipRocket" hidden><span class="ico"><svg viewBox="0 0 18 18"><path d="M9 1c3 2 4 5 4 9H5c0-4 1-7 4-9z" fill="#fff"/><circle cx="9" cy="7" r="1.6" fill="#3b6cff"/><path d="M5 10l-2 4h3zM13 10l2 4h-3z" fill="#fff"/><path d="M7 11h4l-2 5z" fill="#ffd23f"/></svg></span>Roket <span class="bar"><i id="barRocket"></i></span></div>
         <div class="pchip board" id="chipBoard" hidden><span class="ico"><svg viewBox="0 0 18 18"><rect x="2" y="7" width="14" height="3.4" rx="1.7" fill="#fff"/><circle cx="5" cy="12.5" r="1.6" fill="#fff"/><circle cx="13" cy="12.5" r="1.6" fill="#fff"/></svg></span>Kaykay <span class="bar"><i id="barBoard"></i></span></div>
         <div class="pchip magnet" id="chipMagnet" hidden><span class="ico"><svg viewBox="0 0 18 18"><path d="M4 3v6a5 5 0 0 0 10 0V3h-3v6a2 2 0 0 1-4 0V3z" fill="#fff"/><rect x="4" y="3" width="3" height="2.5" fill="#ff5f6d"/><rect x="11" y="3" width="3" height="2.5" fill="#ff5f6d"/></svg></span>Mıknatıs <span class="bar"><i id="barMagnet"></i></span></div>
+        <div class="pchip dbl" id="chipDouble" hidden><span class="ico"><b>x2</b></span>2 Kat <span class="bar"><i id="barDouble"></i></span></div>
+        <div class="pchip shield" id="chipShield" hidden><span class="ico"><svg viewBox="0 0 18 18"><path d="M9 1.5l6 2.3v4.6c0 3.8-2.6 6.6-6 8.1-3.4-1.5-6-4.3-6-8.1V3.8z" fill="#fff"/><path d="M9 5l1.1 2.3 2.5.3-1.8 1.7.5 2.5L9 10.6l-2.3 1.2.5-2.5-1.8-1.7 2.5-.3z" fill="#14b892"/></svg></span>Kalkan <span class="bar"><i id="barShield"></i></span></div>
+        <div class="pchip shoes" id="chipShoes" hidden><span class="ico"><svg viewBox="0 0 18 18"><path d="M2 12.5c0-2 .6-4.5 1.6-6.5h3.2c.4 1.6 1.8 2.6 3.6 2.6 2.6 0 5.6 1.6 5.6 3.9v1H2z" fill="#fff"/><rect x="2" y="13.5" width="14" height="2" rx="1" fill="#ffd23f"/><path d="M4 6L1 3.5M5.5 6L4 2.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></span>Zıplama <span class="bar"><i id="barShoes"></i></span></div>
       </div>
     </div>
 
@@ -323,6 +359,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     </div>
 
     <div class="ov start" id="startOv">
+      <button class="btn-sq small gear-btn" id="setBtn" aria-label="Ayarlar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm9 4.6v-2.2l-2.4-.6a7 7 0 0 0-.7-1.7l1.3-2.1-1.6-1.6-2.1 1.3a7 7 0 0 0-1.7-.7L13.1 3h-2.2l-.6 2.4a7 7 0 0 0-1.7.7L6.5 4.8 4.9 6.4l1.3 2.1a7 7 0 0 0-.7 1.7L3 10.9v2.2l2.4.6c.2.6.4 1.2.7 1.7l-1.3 2.1 1.6 1.6 2.1-1.3c.5.3 1.1.6 1.7.7l.6 2.5h2.2l.6-2.4a7 7 0 0 0 1.7-.7l2.1 1.3 1.6-1.6-1.3-2.1c.3-.5.6-1.1.7-1.7z" fill="#3a4790"/></svg></button>
       <div>
         <h1 class="title"><svg class="wind" viewBox="0 0 60 40" aria-hidden="true"><path d="M4 12h30a7 7 0 1 0-7-7M2 22h44a7 7 0 1 1-7 7M10 32h16" stroke="#ffffff" stroke-width="4.5" fill="none" stroke-linecap="round"/></svg>Ray<span>zgâr</span></h1>
         <p class="tag">Koş, zıpla, altınları topla!</p>
@@ -330,7 +367,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       <div class="bottom">
         <button class="profile" id="profileBtn" aria-label="Koşucunu değiştir">
           <span class="avatar"><img id="runnerAvatar" alt=""></span>
-          <span class="who"><small>KOŞUCU</small><b id="runnerName">Fırtına</b><em id="runnerKind">Tilki</em></span>
+          <span class="who"><small id="runnerKindTag">KOŞUCU</small><b id="runnerName">Fırtına</b><em id="runnerKind">Tilki</em></span>
           <svg class="chev" viewBox="0 0 12 20" aria-hidden="true"><path d="M3 3l6 7-6 7" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span class="bank"><i class="coin-ico"></i><span class="bank-t"><small>ALTIN</small><b id="walletStart">0</b></span></span>
         </button>
@@ -338,9 +375,10 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
           <button class="big-btn" id="playBtn">Oyna</button>
           <button class="big-btn shop" id="marketBtn"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M2 3h3l2.4 10.5h10L20 6H6.2" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linejoin="round" stroke-linecap="round"/><circle cx="9" cy="18" r="1.9" fill="#ffffff"/><circle cx="16" cy="18" r="1.9" fill="#ffffff"/></svg>Market</button>
         </div>
-        <div class="btn-row">
+        <div class="pill-row3">
           <button class="pill-btn" id="dailyBtn"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="9" width="16" height="10" rx="2" fill="#ff5f8f"/><rect x="2" y="6" width="18" height="4" rx="1.5" fill="#ff8fb5"/><rect x="10" y="6" width="2.4" height="13" fill="#ffd23f"/><path d="M11 6c-2-4-6-3-4 0M11.4 6c2-4 6-3 4 0" stroke="#ffd23f" stroke-width="2" fill="none"/></svg>Günlük Ödül<span class="dot" id="dailyDot" hidden>!</span></button>
           <button class="pill-btn" id="questBtn"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="3" y="2.5" width="16" height="17" rx="3" fill="#3b6cff"/><path d="M6.5 8l1.6 1.6L11 6.6M6.5 14l1.6 1.6L11 12.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12.5" y="7.4" width="4" height="1.8" rx=".9" fill="#fff"/><rect x="12.5" y="13.4" width="4" height="1.8" rx=".9" fill="#fff"/></svg>Görevler<span class="dot" id="questDot" hidden>0</span></button>
+          <button class="pill-btn" id="achBtn"><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M6 1.5h4l1 4.5-3 1zM16 1.5h-4l-1 4.5 3 1z" fill="#ff5f8f"/><circle cx="11" cy="13.5" r="7" fill="#ffd23f" stroke="#e69500" stroke-width="1.6"/><path d="M11 9.6l1.2 2.4 2.6.4-1.9 1.8.5 2.6L11 15.6l-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z" fill="#fff"/></svg>Rozetler<span class="dot" id="achDot" hidden>0</span></button>
         </div>
         <div class="gestures" aria-label="Nasıl oynanır">
           <div class="gest"><span class="g-ico side"><svg viewBox="0 0 40 40"><path d="M9 20h22M9 20l5-5M9 20l5 5M31 20l-5-5M31 20l-5 5" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle class="tip" cx="20" cy="20" r="4.5" fill="#ffd23f"/></svg></span><b>Sağa · Sola</b><small>Şerit değiştir</small></div>
@@ -355,6 +393,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       <div class="card">
         <h2>Mola</h2>
         <button class="big-btn" id="resumeBtn">Devam</button>
+        <button class="pill-btn wide" id="pauseSet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm9 4.6v-2.2l-2.4-.6a7 7 0 0 0-.7-1.7l1.3-2.1-1.6-1.6-2.1 1.3a7 7 0 0 0-1.7-.7L13.1 3h-2.2l-.6 2.4a7 7 0 0 0-1.7.7L6.5 4.8 4.9 6.4l1.3 2.1a7 7 0 0 0-.7 1.7L3 10.9v2.2l2.4.6c.2.6.4 1.2.7 1.7l-1.3 2.1 1.6 1.6 2.1-1.3c.5.3 1.1.6 1.7.7l.6 2.5h2.2l.6-2.4a7 7 0 0 0 1.7-.7l2.1 1.3 1.6-1.6-1.3-2.1c.3-.5.6-1.1.7-1.7z" fill="#3a4790"/></svg>Ayarlar</button>
       </div>
     </div>
 
@@ -398,6 +437,26 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
         <p class="mk-note">Her gün 3 yeni görev gelir. Bitir, altını kap!</p>
         <div class="quest-list" id="questList"></div>
         <div class="q-bonus" id="qBonus"></div>
+      </div>
+    </div>
+
+    <div class="ov market" id="achOv" hidden>
+      <div class="mk" role="dialog" aria-labelledby="achTitle">
+        <div class="mk-head"><h2 id="achTitle">Rozetler</h2><div class="wallet"><i class="coin-ico"></i><span id="aWallet">0</span></div><button class="x-btn" id="achClose" aria-label="Kapat">✕</button></div>
+        <div class="ach-sum" id="achSum"></div>
+        <div class="quest-list" id="achList"></div>
+      </div>
+    </div>
+
+    <div class="ov market" id="setOv" hidden>
+      <div class="mk" role="dialog" aria-labelledby="setTitle">
+        <div class="mk-head"><h2 id="setTitle">Ayarlar</h2><button class="x-btn" id="setClose" aria-label="Kapat">✕</button></div>
+        <div class="set-list">
+          <div class="set-row"><span class="s-ico" style="background:#3b6cff"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#fff"/><path d="M16 8.5a5 5 0 0 1 0 7" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></span><span class="lbl">Ses efektleri<small>Altın, zıplama ve çarpma sesleri</small></span><button class="sw" id="swSfx" aria-label="Ses efektleri"></button></div>
+          <div class="set-row"><span class="s-ico" style="background:#ff5f8f"><svg viewBox="0 0 24 24"><path d="M9 17V5l11-2v12" stroke="#fff" stroke-width="2.2" fill="none" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="3" fill="#fff"/><circle cx="17.5" cy="15.5" r="3" fill="#fff"/></svg></span><span class="lbl">Müzik<small>Her dünyanın kendi şarkısı</small></span><button class="sw" id="swMusic" aria-label="Müzik"></button></div>
+          <div class="set-row"><span class="s-ico" style="background:#ff8a3d"><svg viewBox="0 0 24 24"><rect x="7.5" y="3" width="9" height="18" rx="2.2" fill="#fff"/><path d="M4 8v8M20 8v8M1.5 10v4M22.5 10v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="lbl">Titreşim<small>Çarpınca telefon titrer</small></span><button class="sw" id="swVib" aria-label="Titreşim"></button></div>
+          <button class="pill-btn wide" id="tutReset">Rehberi yeniden göster</button>
+        </div>
       </div>
     </div>
 
@@ -470,7 +529,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   scene.add(sun, sun.target);
 
   const LANE = 2.2, WALL_X = 5, UP = 0;
-  let curTheme = null;
+  let curTheme = null, musicWorld = "gunes", musicDirty = true;
 
   // ---------- dokular ----------
   const dirtTex = canvasTex(256, 256, (g, w, h) => {
@@ -653,7 +712,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   for (const side of [-1, 1]) for (let k = 0; k < 22; k++) {
     const obj = makeTree(pick(["round", "round", "pine", "blossom"]));
     obj.position.set(0, UP, -k * (TREE_P / 22) + rnd(-3, 3) + 8);
-    const t = { obj, side, period: TREE_P, place: placeTree }; placeTree(t);
+    const t = { obj, side, period: TREE_P, place: placeTree, kind: "tree" }; placeTree(t);
     scene.add(obj); scenery.push(t);
   }
 
@@ -701,7 +760,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   for (const side of [-1, 1]) for (let k = 0; k < 12; k++) {
     const b = makeBuilding();
     b.g.position.set(0, UP, -k * (BLD_P / 12) + rnd(-3, 3));
-    const t = { obj: b.g, b, side, period: BLD_P, place: placeBuilding }; placeBuilding(t);
+    const t = { obj: b.g, b, side, period: BLD_P, place: placeBuilding, kind: "bld" }; placeBuilding(t);
     scene.add(b.g); scenery.push(t);
   }
 
@@ -746,7 +805,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   for (let k = 0; k < 6; k++) {
     const obj = k % 3 === 1 ? makeBridge() : makeBunting();
     obj.position.z = -k * (OVER_P / 6) - 15;
-    scene.add(obj); scenery.push({ obj, period: OVER_P });
+    scene.add(obj); scenery.push({ obj, period: OVER_P, kind: "over" });
   }
 
 
@@ -1426,6 +1485,22 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
 
   // ---------- güçlendirmeler ----------
   const pickups = [];
+  const PCOL = { rocket: 0xffb020, magnet: 0x8fd3ff, double: 0xffd23f, shield: 0x2bd6a8, shoes: 0xc3a6ff, box: 0xff5f8f };
+  const x2Tex = canvasTex(128, 128, (g, w, h) => {
+    g.fillStyle = "#ffd23f"; g.beginPath(); g.arc(64, 64, 64, 0, 7); g.fill();
+    g.fillStyle = "#ffb000"; g.beginPath(); g.arc(64, 64, 52, 0, 7); g.fill();
+    g.fillStyle = "#fff"; g.strokeStyle = "#8a5200"; g.lineWidth = 8; g.font = "800 64px 'Baloo 2', Nunito, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle";
+    g.strokeText("x2", 64, 70); g.fillText("x2", 64, 70);
+  });
+  const qTex = canvasTex(128, 128, (g, w, h) => {
+    const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "#c3a6ff"); gr.addColorStop(1, "#7b5cd6"); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    g.fillStyle = "#fff"; g.strokeStyle = "#3d2a8a"; g.lineWidth = 8; g.font = "800 92px 'Baloo 2', Nunito, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle";
+    g.strokeText("?", 64, 72); g.fillText("?", 64, 72);
+  });
+  const shieldShape = new THREE.Shape();
+  shieldShape.moveTo(0, 0.38); shieldShape.quadraticCurveTo(0.2, 0.3, 0.34, 0.32); shieldShape.quadraticCurveTo(0.36, -0.12, 0, -0.42);
+  shieldShape.quadraticCurveTo(-0.36, -0.12, -0.34, 0.32); shieldShape.quadraticCurveTo(-0.2, 0.3, 0, 0.38);
+  const shieldGeo = new THREE.ExtrudeGeometry(shieldShape, { depth: 0.1, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.03, bevelSegments: 2 }); shieldGeo.center();
   const glowMat = new THREE.MeshBasicMaterial({ color: 0xfff3a0, transparent: true, opacity: 0.35, depthWrite: false, blending: THREE.AdditiveBlending });
   function makePickup(type) {
     const g2 = new THREE.Group(), inner = new THREE.Group(); g2.add(inner);
@@ -1436,13 +1511,34 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       for (let i = 0; i < 3; i++) { const fin = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.3, 0.22), T(0xff3d6e)); const a = i * Math.PI * 2 / 3; fin.position.set(Math.cos(a) * 0.24, -0.3, Math.sin(a) * 0.24); fin.rotation.y = -a; inner.add(fin); }
       const fl = new THREE.Mesh(new THREE.ConeGeometry(0.12, 0.35, 10), new THREE.MeshBasicMaterial({ color: 0xffb020 })); fl.rotation.x = Math.PI; fl.position.y = -0.55; inner.add(fl);
       inner.rotation.z = 0.5;
-    } else {
+    } else if (type === "magnet") {
       const h = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.11, 10, 20, Math.PI), T(0xff3d6e)); h.rotation.z = Math.PI; inner.add(h);
       for (const s of [-1, 1]) { const tip = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.2, 12), T(0xdfe6f2)); tip.position.set(s * 0.3, 0.1, 0); inner.add(tip); }
+    } else if (type === "double") {
+      const disc = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.12, 28), [T(0xffb000), new THREE.MeshToonMaterial({ map: x2Tex, gradientMap: toonGrad }), new THREE.MeshToonMaterial({ map: x2Tex, gradientMap: toonGrad })]);
+      disc.rotation.x = Math.PI / 2; disc.rotation.y = Math.PI / 2; inner.add(disc);
+    } else if (type === "shield") {
+      const sh = new THREE.Mesh(shieldGeo, T(0x14b892)); inner.add(sh);
+      const rim = new THREE.Mesh(shieldGeo, T(0xffffff)); rim.scale.set(1.18, 1.12, 0.6); rim.position.z = -0.03; inner.add(rim);
+      const st = new THREE.Mesh(starGeo, T(0xffd23f)); st.scale.set(0.15, 0.15, 0.25); st.position.set(0, 0.03, 0.08); st.userData.noOutline = true; inner.add(st);
+    } else if (type === "shoes") {
+      const shoeM = T(0x7b5cd6), soleM = T(0xffffff);
+      const up = new THREE.Mesh(new THREE.CapsuleGeometry(0.17, 0.32, 4, 10), shoeM); up.rotation.x = Math.PI / 2; up.scale.set(1, 1, 0.8); up.position.set(0, 0.05, 0); inner.add(up);
+      const ank = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.17, 0.26, 12), shoeM); ank.position.set(0, 0.2, 0.14); inner.add(ank);
+      const sole = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.08, 0.7), soleM); sole.position.y = -0.13; inner.add(sole);
+      for (const s of [-1, 1]) { const w = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.42, 4), T(0xffd23f)); w.position.set(s * 0.24, 0.22, 0.14); w.rotation.z = -s * 1.0; inner.add(w); }
+      inner.rotation.y = 0.6;
+    } else if (type === "box") {
+      const box = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.62, 0.62), new THREE.MeshToonMaterial({ map: qTex, gradientMap: toonGrad })); inner.add(box);
+      const rib = T(0xffd23f);
+      const r1 = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.66, 0.12), rib); r1.userData.noOutline = true; inner.add(r1);
+      const r2 = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.66, 0.66), rib); r2.userData.noOutline = true; inner.add(r2);
+      for (const s of [-1, 1]) { const bow = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.045, 6, 12), rib); bow.position.set(s * 0.1, 0.39, 0); bow.rotation.y = Math.PI / 2; bow.rotation.x = s * 0.5; inner.add(bow); }
+      inner.rotation.set(0.25, 0.4, 0.1);
     }
-    inner.traverse(o => { if (o.isMesh && !o.material.isMeshBasicMaterial) { const ol = new THREE.Mesh(o.geometry, outlineMat); ol.scale.setScalar(1.08); o.add(ol); } });
+    inner.traverse(o => { if (o.isMesh && !o.userData.noOutline && o.material !== outlineMat && !o.material.isMeshBasicMaterial) { const ol = new THREE.Mesh(o.geometry, outlineMat); ol.scale.setScalar(1.08); o.add(ol); } });
     const halo = new THREE.Mesh(new THREE.SphereGeometry(0.75, 16, 12), glowMat); g2.add(halo);
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.05, 8, 32), new THREE.MeshBasicMaterial({ color: type === "rocket" ? 0xffb020 : 0x8fd3ff })); ring.rotation.x = Math.PI / 2; g2.add(ring);
+    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.05, 8, 32), new THREE.MeshBasicMaterial({ color: PCOL[type] })); ring.rotation.x = Math.PI / 2; g2.add(ring);
     return g2;
   }
   function addPickup(type, lane, z) {
@@ -1516,14 +1612,148 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     addObs({ type: "ramp", lane, z: zNear, len: 4, mesh: g, isRamp: true });
   }
 
+  // hareketli engel: şeritler arasında gidip gelen bariyer
+  const moverBaseM = M(0x3b6cff), moverStripe = M(0xffffff, { map: stripeTex });
+  const beaconM = new THREE.MeshStandardMaterial({ color: 0xffd23f, emissive: 0xffb000, emissiveIntensity: 1.2 });
+  function makeMover(z, ph) {
+    const g = new THREE.Group();
+    const base = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.28, 0.7), moverBaseM); base.position.y = 0.34; g.add(base);
+    for (const sx of [-0.65, 0.65]) for (const sz of [-0.22, 0.22]) { const w = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.12, 12), wheelM); w.rotation.z = Math.PI / 2; w.position.set(sx, 0.17, sz); g.add(w); }
+    for (const s of [-1, 1]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.16, 1.0, 0.16), moverBaseM); p.position.set(s * 0.8, 0.95, 0); g.add(p); }
+    for (const y of [0.85, 1.25]) { const b = new THREE.Mesh(new THREE.BoxGeometry(1.85, 0.24, 0.14), moverStripe); b.position.y = y; g.add(b); }
+    const bc = new THREE.Mesh(new THREE.SphereGeometry(0.16, 10, 8), beaconM); bc.position.y = 1.55; g.add(bc);
+    for (const s of [-1, 1]) { const ar = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.36, 3), M(0xffd23f)); ar.rotation.z = -s * Math.PI / 2; ar.position.set(s * 1.12, 0.36, 0); g.add(ar); }
+    addObs({ type: "barrier", lane: 0, z, len: 0.5, mesh: g, mover: { ph, sp: rnd(1.5, 2.1) }, x: 0 });
+  }
+  // karşıdan gelen vagon
+  const headM = new THREE.MeshStandardMaterial({ color: 0xfff6c0, emissive: 0xffe27a, emissiveIntensity: 1.6 });
+  function addHeadlights(o) {
+    for (const s of [-1, 1]) { const h = new THREE.Mesh(new THREE.SphereGeometry(0.2, 12, 8), headM); h.position.set(s * 0.55, 1.05, o.len / 2 + 0.02); h.scale.z = 0.4; o.mesh.add(h); }
+    const face = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.5, 0.06), M(0x1c1640)); face.position.set(0, 2.55, o.len / 2 + 0.02); o.mesh.add(face);
+    const eyes = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.12, 0.08), headM); eyes.position.set(0, 2.55, o.len / 2 + 0.05); o.mesh.add(eyes);
+  }
+  function spawnOncoming(z) {
+    const lanes = [-1, 0, 1], L = pick(lanes);
+    makeTrain(L, z - 28 - 2.1, 1);
+    const o = obstacles[obstacles.length - 1]; o.vz = 9; o.oncoming = true; addHeadlights(o);
+    const others = lanes.filter(l => l !== L);
+    coinLine(pick(others), z - 4, 9);
+    return 34;
+  }
+  function spawnMovers(z) {
+    makeMover(z - 6, rnd(0, 6)); makeMover(z - 18, rnd(0, 6));
+    coinArc(pick([-1, 0, 1]), z - 6); coinArc(pick([-1, 0, 1]), z - 18);
+    return 26;
+  }
+  // tünel ve köprü (dekor bölümleri: çarpışma yok)
+  const brickTex = canvasTex(128, 128, (g, w, h) => {
+    g.fillStyle = "#8a7fb8"; g.fillRect(0, 0, w, h);
+    for (let y = 0; y < h; y += 32) for (let x = (y / 32) % 2 ? -32 : 0; x < w; x += 64) { g.fillStyle = pick(["#b5aee0", "#a79fd6", "#c2bce8", "#9e96cf"]); g.fillRect(x + 3, y + 3, 58, 26); }
+  }, 1, 1);
+  const portalTex = canvasTex(128, 128, (g, w, h) => {
+    g.fillStyle = "#c98a55"; g.fillRect(0, 0, w, h);
+    for (let y = 0; y < h; y += 42) for (let x = (y / 42) % 2 ? -40 : 0; x < w; x += 80) { g.fillStyle = pick(["#e8b07a", "#dba06a", "#f0c08a", "#d49660"]); g.fillRect(x + 4, y + 4, 72, 34); }
+  }, 2, 2);
+  const tunRoofM = M(0x4a4380), tunLightM = new THREE.MeshStandardMaterial({ color: 0xfff1b0, emissive: 0xffd27a, emissiveIntensity: 1.4 });
+  const portalM = M(0xffffff, { map: portalTex });
+  const TW = 8.1, TH = 8;
+  const archShape = new THREE.Shape();
+  archShape.moveTo(-TW - 1.6, 0); archShape.lineTo(-TW - 1.6, TH + 2.6); archShape.lineTo(TW + 1.6, TH + 2.6); archShape.lineTo(TW + 1.6, 0); archShape.lineTo(TW, 0);
+  archShape.absarc(0, 0, TW, 0, Math.PI, false); archShape.lineTo(-TW - 1.6, 0);
+  const archGeo = new THREE.ExtrudeGeometry(archShape, { depth: 1.2, bevelEnabled: false }); archGeo.translate(0, 0, -0.6);
+  const tunSignTex = canvasTex(256, 64, (g, w, h) => {
+    g.fillStyle = "#ffd23f"; g.fillRect(0, 0, w, h); g.fillStyle = "#3d2a8a"; g.fillRect(5, 5, w - 10, h - 10);
+    g.fillStyle = "#ffd23f"; g.font = "800 40px 'Baloo 2', Nunito, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("TÜNEL", w / 2, h / 2 + 3);
+  });
+  function makeTunnel(zNear, len) {
+    const g = new THREE.Group();
+    const wallM = M(0xffffff, { map: brickTex.clone() }); wallM.map.needsUpdate = true; wallM.map.repeat.set(Math.round(len / 3), 3);
+    for (const s of [-1, 1]) {
+      const wall = new THREE.Mesh(new THREE.BoxGeometry(0.8, TH, len), wallM); wall.position.set(s * (TW + 0.4), TH / 2, 0); g.add(wall);
+      const strip = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.3, len - 2), tunLightM); strip.position.set(s * (TW - 0.06), 5.4, 0); g.add(strip);
+    }
+    const roof = new THREE.Mesh(new THREE.BoxGeometry(2 * TW + 1.6, 0.8, len), tunRoofM); roof.position.y = TH + 0.4; g.add(roof);
+    for (let zz = -len / 2 + 2; zz < len / 2 - 1; zz += 4) { const l = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.12, 0.5), tunLightM); l.position.set(0, TH - 0.05, zz); g.add(l); }
+    for (const e of [1, -1]) {
+      const a = new THREE.Mesh(archGeo, portalM); a.position.z = e * (len / 2); g.add(a);
+      const top = new THREE.Mesh(new THREE.BoxGeometry(2 * TW + 3.6, 0.5, 1.6), M(0x7b5cd6)); top.position.set(0, TH + 2.85, e * (len / 2)); g.add(top);
+    }
+    const sign = new THREE.Mesh(new THREE.PlaneGeometry(4.4, 1.1), M(0xffffff, { map: tunSignTex })); sign.position.set(0, TH + 1.55, len / 2 + 0.62); g.add(sign);
+    shadowAll(g, true, true);
+    g.traverse(m => { if (m.isMesh && (m.material === tunLightM)) m.castShadow = false; });
+    const o = { type: "tunnel", decor: true, lane: 99, z: zNear - len / 2, len, mesh: g };
+    g.position.set(0, 0, o.z); scene.add(g); obstacles.push(o);
+  }
+  const waterTex = canvasTex(128, 128, (g, w, h) => {
+    const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "#38b6f0"); gr.addColorStop(1, "#2a9fe0"); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+    g.strokeStyle = "rgba(255,255,255,.6)"; g.lineWidth = 3; g.lineCap = "round";
+    for (let i = 0; i < 7; i++) { const y = 9 + i * 18, x0 = (i * 37) % 128; g.beginPath(); g.moveTo(x0, y); g.quadraticCurveTo(x0 + 10, y - 5, x0 + 20, y); g.quadraticCurveTo(x0 + 30, y + 5, x0 + 40, y); g.stroke(); }
+  }, 10, 2);
+  const waterM = M(0xffffff, { map: waterTex, roughness: 0.55 });
+  const stoneM = M(0xb9b3d6), capStoneM = M(0xe2dcf5), sandM = M(0xf0d59c);
+  const duckM = T(0xffd23f), beakM = T(0xff8a3d), eyeM2 = T(0x1c1640);
+  function makeDuck() {
+    const g = new THREE.Group();
+    const b = new THREE.Mesh(new THREE.SphereGeometry(0.42, 14, 10), duckM); b.scale.set(1, 0.7, 1.3); b.position.y = 0.2; g.add(b);
+    const h = new THREE.Mesh(new THREE.SphereGeometry(0.26, 12, 10), duckM); h.position.set(0, 0.62, 0.38); g.add(h);
+    const bk = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.24, 8), beakM); bk.rotation.x = Math.PI / 2; bk.position.set(0, 0.58, 0.66); g.add(bk);
+    for (const s of [-1, 1]) { const e = new THREE.Mesh(new THREE.SphereGeometry(0.045, 6, 6), eyeM2); e.position.set(s * 0.13, 0.7, 0.58); g.add(e); }
+    const tl = new THREE.Mesh(new THREE.ConeGeometry(0.12, 0.3, 6), duckM); tl.rotation.x = -2.2; tl.position.set(0, 0.38, -0.55); g.add(tl);
+    return g;
+  }
+  function makeRiver(zNear, len) {
+    const g = new THREE.Group();
+    for (const s of [-1, 1]) {
+      const w = new THREE.Mesh(new THREE.PlaneGeometry(80, len), waterM); w.rotation.x = -Math.PI / 2; w.position.set(s * 47.7, 0.12, 0); w.receiveShadow = true; g.add(w);
+      for (const e of [-1, 1]) { const bank = new THREE.Mesh(new THREE.BoxGeometry(80, 0.3, 0.9), sandM); bank.position.set(s * 47.7, 0.1, e * (len / 2 + 0.3)); bank.receiveShadow = true; g.add(bank); }
+      const par = new THREE.Mesh(new THREE.BoxGeometry(0.5, 1.0, len + 1.6), stoneM); par.position.set(s * 7.75, 0.6, 0); g.add(par);
+      const cap = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.18, len + 1.8), capStoneM); cap.position.set(s * 7.75, 1.18, 0); g.add(cap);
+      for (const e of [-1, 1]) { const post = new THREE.Mesh(new THREE.BoxGeometry(0.9, 1.8, 0.9), capStoneM); post.position.set(s * 7.75, 0.9, e * (len / 2 + 0.6)); g.add(post); const ball = new THREE.Mesh(new THREE.SphereGeometry(0.3, 12, 8), M(0xff8a3d)); ball.position.set(s * 7.75, 2.0, e * (len / 2 + 0.6)); g.add(ball); }
+      for (let i = 0; i < 2; i++) { const d = makeDuck(); d.position.set(s * rnd(10, 20), 0.08, rnd(-len / 2 + 2, len / 2 - 2)); d.rotation.y = rnd(0, 6); d.userData.bob = rnd(0, 6); g.add(d); }
+    }
+    // köprü kapıları: iki uçta kuleler ve üstte kemer, aralarında askı halatları
+    const towerM = M(0xff5f6d), beamM = M(0xffd23f), cableM = new THREE.LineBasicMaterial({ color: 0xff5f6d });
+    for (const e of [-1, 1]) {
+      const zE = e * (len / 2 + 0.6);
+      for (const s of [-1, 1]) {
+        const tw = new THREE.Mesh(new THREE.BoxGeometry(0.9, 9, 0.9), towerM); tw.position.set(s * 7.75, 4.5, zE); g.add(tw);
+        const tp = new THREE.Mesh(new THREE.ConeGeometry(0.75, 1.2, 4), beamM); tp.position.set(s * 7.75, 9.6, zE); tp.rotation.y = Math.PI / 4; g.add(tp);
+      }
+      const beam = new THREE.Mesh(new THREE.BoxGeometry(15.5, 0.6, 0.7), towerM); beam.position.set(0, 8.2, zE); g.add(beam);
+      const beam2 = new THREE.Mesh(new THREE.BoxGeometry(15.5, 0.3, 0.75), beamM); beam2.position.set(0, 7.6, zE); g.add(beam2);
+    }
+    for (const s of [-1, 1]) {
+      const pts = []; for (let i = 0; i <= 20; i++) { const t = i / 20, zz = -(len / 2 + 0.6) + t * (len + 1.2); pts.push(new THREE.Vector3(s * 7.75, 8.6 - 6.6 * Math.sin(Math.PI * t), zz)); }
+      g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), cableM));
+      for (let i = 1; i < 6; i++) { const t = i / 6, zz = -(len / 2 + 0.6) + t * (len + 1.2), y = 8.6 - 6.6 * Math.sin(Math.PI * t); g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(s * 7.75, y, zz), new THREE.Vector3(s * 7.75, 1.2, zz)]), cableM)); }
+    }
+    shadowAll(g, true, true);
+    const o = { type: "river", decor: true, lane: 99, z: zNear - len / 2, len, mesh: g };
+    g.position.set(0, 0, o.z); scene.add(g); obstacles.push(o);
+  }
+  function removeTunnelsAhead() {
+    for (let i = obstacles.length - 1; i >= 0; i--) { const o = obstacles[i]; if (o.type === "tunnel" && o.z + o.len / 2 < -3) { scene.remove(o.mesh); obstacles.splice(i, 1); } }
+  }
+  function tunnelNear() { return obstacles.some(o => o.type === "tunnel" && o.z - o.len / 2 < 6 && o.z + o.len / 2 > -90); }
+
   function coinLine(lane, z, n, y, gap) { for (let i = 0; i < n; i++) addCoin(lane, y || 0.9, z - i * (gap || 2.2)); }
   function coinArc(lane, zc) { for (let o = -6; o <= 6; o += 2) addCoin(lane, 0.9 + 2.1 * (1 - Math.pow(o / 7, 2)), zc + o); }
 
-  let nextZ = -30, sectionsMade = 0;
+  let nextZ = -30, sectionsMade = 0, lastSecTunnel = false;
   function spawnSection(z) {
+    sectionsMade++; lastSecTunnel = false;
+    const k = Math.random();
+    if (sectionsMade > 3 && k < 0.09) return spawnOncoming(z);
+    if (sectionsMade > 3 && k < 0.18) return spawnMovers(z);
+    const used = spawnCore(z);
+    if (sectionsMade > 4 && P.rocket <= 0 && k > 0.89) { makeTunnel(z + 3, used + 6); lastSecTunnel = true; }
+    else if (sectionsMade > 3 && k > 0.8 && k <= 0.89) makeRiver(z - used / 2 + 9, 18);
+    return used;
+  }
+  function spawnCore(z) {
     const lanes = [-1, 0, 1], L = pick(lanes);
     let r = Math.random();
-    if (sectionsMade++ < 1) r = 0;
+    if (sectionsMade <= 1) r = 0;
     if (r < 0.2) { coinLine(L, z, 10); return 24; }
     if (r < 0.4) {
       const bl = [L]; if (Math.random() < 0.5) bl.push(pick(lanes.filter(l => l !== L)));
@@ -1550,12 +1780,13 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     return (ramp ? 4 : 0) + len + 4;
   }
   function maybePickup(z, used) {
-    if (sectionsMade < 3 || P.rocket > 0 || Math.random() > 0.17) return;
+    if (sectionsMade < 3 || P.rocket > 0 || lastSecTunnel || Math.random() > 0.24) return;
     const free = [-1, 0, 1].filter(l => !obstacles.some(o => o.lane === l && o.type === "train" && o.z + o.len / 2 > z - used && o.z - o.len / 2 < z + 2));
     if (!free.length) return;
     const lane = pick(free);
     coins.forEach(c => { if (!c.taken && c.lane === lane && Math.abs(c.z - (z - 2)) < 1.2) { scene.remove(c.m); c.taken = true; c.t = 1; } });
-    addPickup(Math.random() < 0.45 ? "rocket" : "magnet", lane, z - 2);
+    const r = Math.random();
+    addPickup(r < 0.18 ? "rocket" : r < 0.36 ? "magnet" : r < 0.53 ? "double" : r < 0.69 ? "shield" : r < 0.84 ? "shoes" : "box", lane, z - 2);
   }
   function fillWorld() { while (nextZ > -170) { const z = nextZ, used = spawnSection(z); maybePickup(z, used); nextZ -= used + rnd(8, 13); } }
 
@@ -1692,7 +1923,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
   function applyWorld(id) {
     const w = WORLDS.find(x => x.id === id) || WORLDS[0];
-    curTheme = w; worldId = w.id;
+    curTheme = w; worldId = w.id; musicWorld = w.id; musicDirty = true;
     try { localStorage.setItem("firtina-world", w.id); } catch (e) {}
     drawSkyTheme(w); drawGrassTheme(w);
     scene.fog.color.setHex(w.fog); scene.fog.near = w.fogNear; scene.fog.far = w.fogFar;
@@ -1743,8 +1974,30 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
 
   // ---------- oyun durumu ----------
-  const ROCKET_T = 8, MAGNET_T = 10, WARN_T = 7, FLY_Y = 7.4, BOARD_T = 10, BOARD_USES = 3;
-  const P = { lane: 0, prevLane: 0, x: 0, y: 0, vy: 0, slide: 0, inv: 0, stumble: 0, wobble: 0, rocket: 0, magnet: 0, landed: true, flip: false, jumpT: 0, land: 0, board: 0, boardUses: BOARD_USES };
+  const ROCKET_T = 8, MAGNET_T = 10, WARN_T = 7, FLY_Y = 7.4, BOARD_T = 10, BOARD_USES = 3, DOUBLE_T = 12, SHIELD_T = 15, SHOES_T = 10;
+  const P = { lane: 0, prevLane: 0, x: 0, y: 0, vy: 0, slide: 0, inv: 0, stumble: 0, wobble: 0, rocket: 0, magnet: 0, landed: true, flip: false, jumpT: 0, land: 0, board: 0, boardUses: BOARD_USES, dbl: 0, shield: 0, shoes: 0 };
+  // her koşucunun kendine has yeteneği
+  const ABIL = {
+    firtina: { t: "Mıknatısı 4 sn daha uzun sürer", k: "magnet", v: 4 },
+    pamuk: { t: "Süper zıplaması 5 sn daha uzun", k: "shoes", v: 5 },
+    karabas: { t: "Kaykayı 4 sn daha uzun sürer", k: "board", v: 4 },
+    mirmir: { t: "Herkesten yükseğe zıplar", k: "jump", v: 1.13 },
+    buzcuk: { t: "Buz gibi uzun kayar", k: "slide", v: 1.15 },
+    boncuk: { t: "Kalkanı 6 sn daha uzun sürer", k: "shield", v: 6 },
+    virak: { t: "Sürpriz kutudan 2 kat altın", k: "box", v: 2 },
+    bambu: { t: "Her koşuda +1 kaykay hakkı", k: "uses", v: 1 },
+    okali: { t: "Çarpınca çabuk toparlanır", k: "warn", v: 4.5 },
+    maskeli: { t: "Her 10 altında 1 altın hediye", k: "coins", v: 10 },
+    kral: { t: "2 kat puanı 5 sn daha uzun", k: "dbl", v: 5 },
+    ejder: { t: "Roketle 3 sn daha uzun uçar", k: "rocket", v: 3 },
+    piril: { t: "Koşuya kalkanla başlar", k: "startShield", v: 10 }
+  };
+  const abil = () => ABIL[charId] || {};
+  const pdur = (k, base) => base + (abil().k === k ? abil().v : 0);
+  const PMAX = {};
+  const PNAME = { rocket: "Roket", magnet: "Mıknatıs", double: "2 Kat Puan", shield: "Kalkan", shoes: "Süper Zıplama", box: "Sürpriz Kutu" };
+  const PDESC = { double: "Bütün puanlar iki katı!", shield: "Bir çarpmaya karşı korur", shoes: "Çok yükseğe zıpla, vagonların üstüne çık!", rocket: "Havada uç, altınları topla", magnet: "Altınlar sana gelir" };
+  let bonusPick = 0;
   let state = "demo", paused = false, speed = 14, dist = 0, score = 0, coinCount = 0, playTime = 0, time = 0, shake = 0, aiT = 0, fallT = 0, usedContinue = false;
   let best = 0; try { best = +localStorage.getItem("firtina-best") || 0; } catch (e) {}
 
@@ -1762,7 +2015,8 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
   function clearAirCoins() { coins.forEach(c => { if (!c.taken && c.y > 5) { c.taken = true; c.t = 1; } }); }
   function resetPlayer() {
-    Object.assign(P, { lane: 0, prevLane: 0, x: 0, y: 0, vy: 0, slide: 0, inv: 0, stumble: 0, wobble: 0, rocket: 0, magnet: 0, landed: true, flip: false, jumpT: 0, land: 0, board: 0, boardUses: BOARD_USES });
+    Object.assign(P, { lane: 0, prevLane: 0, x: 0, y: 0, vy: 0, slide: 0, inv: 0, stumble: 0, wobble: 0, rocket: 0, magnet: 0, landed: true, flip: false, jumpT: 0, land: 0, board: 0, boardUses: BOARD_USES + (abil().k === "uses" ? abil().v : 0), dbl: 0, shield: 0, shoes: 0 });
+    bonusPick = 0;
     fox.body.rotation.set(0, 0, 0); fox.body.position.set(0, 0, 0);
   }
   function resetGame() {
@@ -1772,9 +2026,13 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
 
   // ---------- ses ----------
-  let actx = null, muted = false;
+  let actx = null;
+  // ---------- ayarlar ----------
+  const settings = Object.assign({ sfx: true, music: true, vib: true }, (() => { try { return JSON.parse(localStorage.getItem("firtina-settings") || "{}"); } catch (e) { return {}; } })());
+  const saveSettings = () => { try { localStorage.setItem("firtina-settings", JSON.stringify(settings)); } catch (e) {} };
+  function buzz(ms) { if (settings.vib && navigator.vibrate) { try { navigator.vibrate(ms); } catch (e) {} } }
   function tone(freq, dur, type, vol, delay, slide) {
-    if (!actx || muted) return;
+    if (!actx || !settings.sfx) return;
     const t0 = actx.currentTime + (delay || 0), o = actx.createOscillator(), g = actx.createGain();
     o.type = type || "sine"; o.frequency.setValueAtTime(freq, t0);
     if (slide) o.frequency.exponentialRampToValueAtTime(freq * slide, t0 + dur);
@@ -1792,8 +2050,82 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     power: () => [523, 659, 784, 1046].forEach((f, i) => tone(f, 0.12, "square", 0.035, i * 0.07)),
     rocket: () => { tone(120, 1.0, "sawtooth", 0.05, 0, 4); tone(600, 0.5, "triangle", 0.05, 0.1, 2); },
     board: () => { tone(300, 0.15, "square", 0.04, 0, 2); tone(600, 0.2, "square", 0.04, 0.12, 1.5); },
-    crack: () => { tone(900, 0.08, "square", 0.06, 0, 0.3); tone(200, 0.25, "sawtooth", 0.06, 0.05, 0.5); }
+    crack: () => { tone(900, 0.08, "square", 0.06, 0, 0.3); tone(200, 0.25, "sawtooth", 0.06, 0.05, 0.5); },
+    shield: () => { tone(1200, 0.25, "sine", 0.07, 0, 0.5); tone(600, 0.3, "triangle", 0.05, 0.05, 1.5); },
+    box: () => [784, 988, 1175, 1568].forEach((f, i) => tone(f, 0.14, "triangle", 0.05, i * 0.08)),
+    horn: () => { tone(330, 0.32, "square", 0.035); tone(415, 0.32, "square", 0.03); tone(330, 0.4, "square", 0.035, 0.38); tone(415, 0.4, "square", 0.03, 0.38); },
+    badge: () => [659, 784, 1046, 1318, 1568].forEach((f, i) => tone(f, 0.16, "square", 0.03, i * 0.09))
   };
+
+  // ---------- müzik: her dünyanın kendi neşeli şarkısı (Web Audio ile üretilir) ----------
+  const SCALES = { maj: [0, 2, 4, 5, 7, 9, 11], min: [0, 2, 3, 5, 7, 8, 10], dor: [0, 2, 3, 5, 7, 9, 10], mix: [0, 2, 4, 5, 7, 9, 10] };
+  const MUSIC = {
+    gunes: { bpm: 122, root: 60, sc: "maj", prog: [0, 5, 3, 4], lead: "square" },
+    gunbatimi: { bpm: 100, root: 57, sc: "maj", prog: [0, 3, 5, 4], lead: "triangle", bell: true },
+    gece: { bpm: 90, root: 57, sc: "min", prog: [0, 5, 2, 6], lead: "sine", bell: true },
+    kis: { bpm: 108, root: 62, sc: "maj", prog: [0, 4, 5, 3], lead: "triangle", bell: true },
+    seker: { bpm: 134, root: 64, sc: "maj", prog: [0, 3, 4, 3], lead: "square" },
+    bahar: { bpm: 116, root: 60, sc: "maj", prog: [0, 3, 0, 4], lead: "triangle" },
+    sonbahar: { bpm: 104, root: 55, sc: "dor", prog: [0, 3, 6, 4], lead: "triangle" },
+    col: { bpm: 112, root: 57, sc: "min", prog: [0, 6, 5, 6], lead: "sawtooth" },
+    sualti: { bpm: 94, root: 58, sc: "maj", prog: [0, 5, 3, 4], lead: "sine", bell: true },
+    uzay: { bpm: 110, root: 57, sc: "min", prog: [0, 5, 3, 6], lead: "sawtooth", bell: true },
+    volkan: { bpm: 140, root: 52, sc: "mix", prog: [0, 6, 3, 4], lead: "square" }
+  };
+  let musicGain = null, noiseBuf = null, mSong = null, mStep = 0, mNext = 0;
+  const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+  function makeSong(id) {
+    const d = MUSIC[id] || MUSIC.gunes, sc = SCALES[d.sc];
+    let h = 7; for (const ch of id) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+    const rr = () => { h ^= h << 13; h >>>= 0; h ^= h >>> 17; h ^= h << 5; h >>>= 0; return (h % 10000) / 10000; };
+    const deg = (dg, oct) => d.root + 12 * oct + sc[((dg % 7) + 7) % 7] + 12 * Math.floor(dg / 7);
+    const phrase = () => { const a = []; for (let i = 0; i < 16; i++) { const on = i % 2 === 0 ? rr() < 0.8 : rr() < 0.35; a.push(on ? (i % 4 === 0 ? [0, 2, 4][Math.floor(rr() * 3)] : [0, 1, 2, 3, 4, 5, 7][Math.floor(rr() * 7)]) : null); } return a; };
+    const A = phrase(), B = phrase();
+    return { d, deg, mel: A.concat(B.map((v, i) => (i < 8 ? A[i] : v))) };
+  }
+  function mNote(freq, t, dur, type, vol) {
+    const o = actx.createOscillator(), g = actx.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(vol, t + 0.012); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g).connect(musicGain); o.start(t); o.stop(t + dur + 0.05);
+  }
+  function mNoise(t, dur, vol, freq) {
+    const src = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain();
+    src.buffer = noiseBuf; f.type = "highpass"; f.frequency.value = freq;
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    src.connect(f).connect(g).connect(musicGain); src.start(t); src.stop(t + dur + 0.02);
+  }
+  function playStep(s, t, spb) {
+    const S = mSong, d = S.d, bar = s >> 3, st = s & 7, cd = d.prog[bar];
+    if (st === 0) for (const k of [0, 2, 4]) mNote(mtof(S.deg(cd + k, 0)), t, spb * 7.5, "sine", 0.018);
+    if (st === 0 || st === 3 || st === 4 || st === 6) mNote(mtof(S.deg(cd, -1) + (st === 6 ? 12 : 0)), t, spb * 0.9, "triangle", 0.075);
+    const m = S.mel[s % 32];
+    if (m !== null) {
+      const f = mtof(S.deg(cd + m, 1));
+      mNote(f, t, spb * 0.85, d.lead, d.lead === "sine" ? 0.05 : d.lead === "triangle" ? 0.05 : 0.022);
+      if (d.bell) mNote(f * 2, t, spb * 1.6, "sine", 0.012);
+    }
+    if (st === 0 || st === 4) { const o = actx.createOscillator(), g = actx.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(45, t + 0.14); g.gain.setValueAtTime(0.13, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.16); o.connect(g).connect(musicGain); o.start(t); o.stop(t + 0.2); }
+    if (st === 2 || st === 6) mNoise(t, 0.12, 0.045, 1800);
+    if (st % 2 === 1) mNoise(t, 0.035, 0.022, 7000);
+  }
+  function initMusic() {
+    if (!actx || musicGain) return;
+    musicGain = actx.createGain(); musicGain.gain.value = 0; musicGain.connect(actx.destination);
+    noiseBuf = actx.createBuffer(1, actx.sampleRate * 0.5, actx.sampleRate);
+    const ch = noiseBuf.getChannelData(0); for (let i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+    setInterval(schedMusic, 40);
+  }
+  function schedMusic() {
+    if (!actx || !musicGain || actx.state !== "running") return;
+    if (musicDirty || !mSong) { mSong = makeSong(musicWorld); musicDirty = false; mStep = 0; }
+    const want = settings.music && !document.hidden ? (paused || state === "over" || state === "falling" ? 0.35 : 1) : 0;
+    musicGain.gain.setTargetAtTime(want * 0.85, actx.currentTime, 0.12);
+    if (want === 0) { mNext = 0; return; }
+    const spb = 60 / mSong.d.bpm / 2, now = actx.currentTime;
+    if (mNext < now) mNext = now + 0.06;
+    while (mNext < now + 0.16) { playStep(mStep, mNext, spb); mStep = (mStep + 1) % 32; mNext += spb; }
+  }
 
   // ---------- kontroller ----------
   function grounded() { return P.rocket <= 0.8 && P.y <= groundAt() + 0.01 && P.vy <= 0; }
@@ -1803,18 +2135,19 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
   function jump() {
     if (!grounded()) return;
-    P.vy = P.board > 0 ? 14.2 : 12.5; P.slide = 0; P.jumpT = 0; questEvent("jump", 1); if (state === "play") coachDone("jump"); P.flip = Math.random() < 0.35; sfx.jump();
+    P.vy = (P.shoes > 0 ? 17 : P.board > 0 ? 14.2 : 12.5) * (abil().k === "jump" ? abil().v : 1); P.slide = 0;
+    if (P.shoes > 0) for (let i = 0; i < 10; i++) emit(P.x, P.y + 0.1, 0, pick([0xc3a6ff, 0xffffff, 0xffd23f]), 0.4, rnd(-3, 3), rnd(-1, 1), rnd(-2, 2), 0.45, true); P.jumpT = 0; questEvent("jump", 1); if (state === "play") coachDone("jump"); P.flip = Math.random() < 0.35; sfx.jump();
   }
   function slide() {
     if (P.rocket > 0.8) return;
     if (P.slide <= 0) { sfx.slide(); questEvent("slide", 1); }
     if (state === "play") coachDone("slide");
-    P.slide = 0.75; if (!grounded()) P.vy = -26;
+    P.slide = abil().k === "slide" ? abil().v : 0.75; if (!grounded()) P.vy = -26;
   }
   function activateBoard(free) {
     if (P.board > 0 || P.rocket > 0.8) return;
     if (!free) { if (state !== "play" || paused || P.boardUses <= 0) return; P.boardUses--; questEvent("board", 1); coachDone("board"); }
-    P.board = BOARD_T; sfx.board();
+    P.board = PMAX.board = pdur("board", BOARD_T); sfx.board();
     for (let i = 0; i < 12; i++) emit(P.x, P.y + 0.3, 0, pick(fox.boardDef.trail), 0.45, rnd(-3, 3), rnd(0.5, 3), rnd(-2, 2), 0.5, true);
   }
   function act(a) { if (state !== "play" || paused) return; ({ left: () => move(-1), right: () => move(1), up: jump, down: slide })[a](); }
@@ -1862,33 +2195,41 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   function updateHud() {
     $("score").textContent = Math.floor(score).toLocaleString("tr-TR");
     $("coins").textContent = coinCount;
-    $("mult").textContent = "x" + mult();
-    chip("chipWarn", "barWarn", state === "play" ? P.stumble : 0, WARN_T);
-    chip("chipRocket", "barRocket", P.rocket, ROCKET_T);
-    chip("chipMagnet", "barMagnet", P.magnet, MAGNET_T);
-    chip("chipBoard", "barBoard", P.board, BOARD_T);
+    $("mult").textContent = "x" + scoreMult();
+    $("mult").classList.toggle("dbl", P.dbl > 0);
+    chip("chipWarn", "barWarn", state === "play" ? P.stumble : 0, PMAX.warn || WARN_T);
+    chip("chipRocket", "barRocket", P.rocket, PMAX.rocket || ROCKET_T);
+    chip("chipMagnet", "barMagnet", P.magnet, PMAX.magnet || MAGNET_T);
+    chip("chipBoard", "barBoard", P.board, PMAX.board || BOARD_T);
+    chip("chipDouble", "barDouble", P.dbl, PMAX.dbl || DOUBLE_T);
+    chip("chipShield", "barShield", P.shield, PMAX.shield || SHIELD_T);
+    chip("chipShoes", "barShoes", P.shoes, PMAX.shoes || SHOES_T);
     $("boardCnt").textContent = P.boardUses;
     $("boardBtn").disabled = P.boardUses <= 0 || P.board > 0 || state !== "play";
   }
   function mult() { return 1 + Math.min(4, Math.floor(playTime / 20)); }
+  function scoreMult() { return mult() * (P.dbl > 0 ? 2 : 1); }
   function ensureAudio() {
     if (!actx) { try { actx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
     if (actx && actx.state === "suspended") actx.resume();
+    initMusic();
   }
+  stage.addEventListener("pointerdown", () => ensureAudio(), { once: true });
   function startGame() {
     ensureAudio();
     resetGame(); banked = 0; hideCoach(); timeScale = 1; boardHintShown = false; noHitT = 0; wasOnTop = false; ensureQuests();
     $("marketOv").hidden = true;
     state = "play"; paused = false;
+    if (abil().k === "startShield") { P.shield = PMAX.shield = abil().v; }
     stage.classList.remove("demo");
     $("startOv").hidden = true; $("overOv").hidden = true; $("pauseOv").hidden = true;
   }
   function startFall() {
     hideCoach();
-    state = "falling"; fallT = 0; P.slide = 0; P.rocket = 0; P.magnet = 0; P.board = 0; sfx.fall();
+    state = "falling"; fallT = 0; P.slide = 0; P.rocket = 0; P.magnet = 0; P.board = 0; P.dbl = 0; P.shield = 0; P.shoes = 0; sfx.fall(); buzz([90, 60, 180]);
   }
   function showOver() {
-    questEvent("run_score", Math.floor(score), true); questEvent("run_coins", coinCount, true);
+    questEvent("run_score", Math.floor(score), true); questEvent("run_coins", coinCount, true); questEvent("runs", 1, true);
     state = "over";
     bankCoins(); saveQuests();
     $("overTitle").textContent = CHARACTERS.find(c => c.id === charId).name + " sersemledi!";
@@ -1916,13 +2257,18 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   $("pauseBtn").addEventListener("click", () => setPaused(!paused));
   $("boardBtn").addEventListener("click", () => activateBoard());
   $("resumeBtn").addEventListener("click", () => setPaused(false));
-  $("muteBtn").addEventListener("click", () => {
-    muted = !muted;
+  function syncMuteIcon() {
+    const muted = !settings.sfx && !settings.music;
     $("muteBtn").setAttribute("aria-label", muted ? "Sesi aç" : "Sesi kapat");
     $("muteIco").innerHTML = muted
       ? '<path d="M3 8h4l5-4v14l-5-4H3z" fill="#3a4790"/><path d="M15 8l5 6M20 8l-5 6" stroke="#ff3d6e" stroke-width="2.2" stroke-linecap="round"/>'
       : '<path d="M3 8h4l5-4v14l-5-4H3z" fill="#3a4790"/><path d="M15 7.5a5 5 0 0 1 0 7M17.5 5a8.5 8.5 0 0 1 0 12" stroke="#3a4790" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  }
+  $("muteBtn").addEventListener("click", () => {
+    const on = !settings.sfx && !settings.music;
+    settings.sfx = settings.music = on; saveSettings(); syncMuteIcon(); ensureAudio();
   });
+  syncMuteIcon();
   document.addEventListener("visibilitychange", () => { if (document.hidden) { setPaused(true); if (typeof saveQuests === "function" && quests) saveQuests(); } });
 
   // ---------- market ----------
@@ -1947,7 +2293,8 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   function updateRunnerLine() {
     const d = CHARACTERS.find(c => c.id === charId);
     $("runnerName").textContent = d.name;
-    $("runnerKind").textContent = d.kind;
+    $("runnerKind").textContent = "★ " + ((ABIL[d.id] || {}).t || d.kind);
+    $("runnerKindTag").textContent = "KOŞUCU · " + d.kind.toLocaleUpperCase("tr-TR");
     $("walletStart").textContent = wallet.toLocaleString("tr-TR");
     const u = avatarUrl(d.id); if (u) $("runnerAvatar").src = u;
   }
@@ -1964,23 +2311,23 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   const isOwned = (tab, id) => owned.has(PFX[tab] + id);
   const LISTS = { runners: CHARACTERS, costumes: COSTUMES, boards: BOARDS, worlds: WORLDS };
   let pending = null;
-  function card(id, on, img, name, sub, price, cls) {
+  function card(id, on, img, name, sub, price, cls, abilT) {
     const own = isOwned(mkTab, id), pick2 = pending && pending.id === id;
     const lockSvg = '<span class="lock"><svg viewBox="0 0 14 14"><rect x="2.5" y="6" width="9" height="7" rx="1.5" fill="#fff"/><path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="#fff" stroke-width="1.6" fill="none"/></svg></span>';
     const tagHtml = on ? '<span class="tag2">Seçili</span>' : own ? '<span class="tag2 own">Senin</span>' : '<span class="tag2 price"><i class="coin-ico"></i>' + price.toLocaleString("tr-TR") + "</span>";
-    return '<button class="char' + (on ? " on" : "") + (!own ? " locked" : "") + (pick2 ? " pick" : "") + (cls ? " " + cls : "") + '" data-id="' + id + '" aria-pressed="' + on + '">' + (!own ? lockSvg : "") + img + "<b>" + name + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + tagHtml + "</button>";
+    return '<button class="char' + (on ? " on" : "") + (!own ? " locked" : "") + (pick2 ? " pick" : "") + (cls ? " " + cls : "") + '" data-id="' + id + '" aria-pressed="' + on + '">' + (!own ? lockSvg : "") + img + "<b>" + name + "</b>" + (sub ? "<small>" + sub + "</small>" : "") + (abilT ? '<span class="abil">★ ' + abilT + "</span>" : "") + tagHtml + "</button>";
   }
   function renderMarket() {
     $("wallet").textContent = wallet.toLocaleString("tr-TR");
     for (const [k, id] of Object.entries(TABS)) { $(id).classList.toggle("on", mkTab === k); $(id).setAttribute("aria-selected", mkTab === k); }
     const img = (u) => u ? '<img src="' + u + '" alt="">' : '<span class="ph"></span>';
     let html = "";
-    if (mkTab === "runners") { if (!thumbs) thumbs = makeThumbs(); html = CHARACTERS.map(c => card(c.id, c.id === charId, img(thumbs[c.id]), c.name, c.kind, c.price)).join(""); }
+    if (mkTab === "runners") { if (!thumbs) thumbs = makeThumbs(); html = CHARACTERS.map(c => card(c.id, c.id === charId, img(thumbs[c.id]), c.name, c.kind, c.price, "", (ABIL[c.id] || {}).t)).join(""); }
     else if (mkTab === "costumes") { const t = makeCostumeThumbs(); html = COSTUMES.map(c => card(c.id, c.id === costumeId, img(t[c.id]), c.name, "", c.price)).join(""); }
     else if (mkTab === "boards") { const t = makeBoardThumbs(); html = BOARDS.map(c => card(c.id, c.id === boardId, img(t[c.id]), c.name, "Kaykay", c.price)).join(""); }
     else html = WORLDS.map(w => card(w.id, w.id === worldId, worldPreview(w), w.name, "", w.price, "world")).join("");
     $("mkGrid").innerHTML = html;
-    $("mkNote").textContent = mkTab === "boards" ? "Oyunda çift dokun ya da kaykay düğmesine bas: 10 saniye kaykay, daha yüksek zıplama ve bir çarpmaya karşı koruma." : mkTab === "costumes" ? "Kostümler bütün koşuculara uyar. Kilitli olanları altınla açabilirsin." : "Kilitli olanlara dokun, topladığın altınla satın al.";
+    $("mkNote").textContent = mkTab === "boards" ? "Oyunda çift dokun ya da kaykay düğmesine bas: 10 saniye kaykay, daha yüksek zıplama ve bir çarpmaya karşı koruma." : mkTab === "costumes" ? "Kostümler bütün koşuculara uyar. Kilitli olanları altınla açabilirsin." : mkTab === "runners" ? "Her koşucunun kendine has bir yeteneği var (★). Kilitli olanları altınla aç." : "Kilitli olanlara dokun, topladığın altınla satın al.";
   }
   function selectItem(tab, id) {
     if (tab === "runners") { setCharacter(id); updateRunnerLine(); }
@@ -2002,7 +2349,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (!pending || wallet < pending.price) return;
     wallet -= pending.price;
     try { localStorage.setItem("firtina-wallet", String(wallet)); } catch (e) {}
-    owned.add(PFX[pending.tab] + pending.id); saveOwned();
+    owned.add(PFX[pending.tab] + pending.id); saveOwned(); statEvent("buys", owned.size - 4);
     selectItem(pending.tab, pending.id);
     sfx.power(); setTimeout(sfx.coin, 200);
     hideBuy(); updateRunnerLine(); renderMarket();
@@ -2063,7 +2410,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   }
   $("dailyClaim").addEventListener("click", () => {
     const st = dailyState(); if (!st.available) return;
-    daily = { last: todayKey(), streak: st.day }; saveJSON("firtina-daily", daily);
+    daily = { last: todayKey(), streak: st.day }; saveJSON("firtina-daily", daily); statEvent("streak", st.day);
     addWallet(DAILY[st.day - 1]); ensureAudio(); sfx.power(); setTimeout(sfx.coin, 250);
     renderDaily();
   });
@@ -2075,7 +2422,9 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     { t: "jump", kind: "sum", n: [30, 60], r: [50, 100], text: n => n + " kez zıpla" },
     { t: "slide", kind: "sum", n: [15, 30], r: [50, 100], text: n => n + " kez kay" },
     { t: "board", kind: "sum", n: [3, 6], r: [60, 120], text: n => "Kaykaya " + n + " kez bin" },
-    { t: "power", kind: "sum", n: [2, 4], r: [70, 130], text: n => n + " roket ya da mıknatıs topla" },
+    { t: "power", kind: "sum", n: [3, 5], r: [70, 130], text: n => n + " güçlendirme topla" },
+    { t: "box", kind: "sum", n: [2, 4], r: [70, 130], text: n => n + " sürpriz kutu aç" },
+    { t: "tunnel", kind: "sum", n: [3, 6], r: [50, 110], text: n => n + " tünelden geç" },
     { t: "run_score", kind: "max", n: [3000, 8000], r: [80, 150], text: n => "Tek koşuda " + n.toLocaleString("tr-TR") + " puan yap" },
     { t: "dist", kind: "sum", n: [1500, 4000], r: [60, 120], text: n => "Toplam " + n.toLocaleString("tr-TR") + " metre koş" },
     { t: "ontop", kind: "sum", n: [3, 6], r: [70, 130], text: n => "Rampadan vagonların üstüne " + n + " kez çık" },
@@ -2102,14 +2451,81 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   let questDirty = false, questSaveT = 0;
   function questEvent(type, val, force) {
     if (state !== "play" && !force) return;
+    statEvent(type, val);
     for (const q of quests.list) {
       if (q.t !== type || q.done) continue;
       q.p = q.kind === "max" ? Math.max(q.p, val) : q.p + val;
       questDirty = true;
-      if (q.p >= q.n) { q.p = q.n; q.done = true; toast("Görev tamam: " + questText(q)); sfx.power(); saveQuests(); }
+      if (q.p >= q.n) { q.p = q.n; q.done = true; toast("Görev tamam: " + questText(q)); sfx.power(); statEvent("quest", 1); saveQuests(); }
     }
   }
-  function saveQuests() { questDirty = false; saveJSON("firtina-quests", quests); updateBadges(); }
+  function saveQuests() { questDirty = false; saveJSON("firtina-quests", quests); saveJSON("firtina-stats", stats); updateBadges(); }
+
+  // ---------- rozetler (kalıcı başarımlar) ----------
+  const ACH = [
+    { id: "coin1", name: "Altın Avcısı", text: "Toplam 1.000 altın topla", k: "coin", n: 1000, r: 150, tier: 0 },
+    { id: "coin2", name: "Altın Kralı", text: "Toplam 10.000 altın topla", k: "coin", n: 10000, r: 600, tier: 1 },
+    { id: "coin3", name: "Hazine Ustası", text: "Toplam 50.000 altın topla", k: "coin", n: 50000, r: 2000, tier: 2 },
+    { id: "score1", name: "İyi Başlangıç", text: "Tek koşuda 5.000 puan yap", k: "run_score", n: 5000, r: 150, tier: 0 },
+    { id: "score2", name: "Rekortmen", text: "Tek koşuda 25.000 puan yap", k: "run_score", n: 25000, r: 500, tier: 1 },
+    { id: "score3", name: "Efsane Koşucu", text: "Tek koşuda 75.000 puan yap", k: "run_score", n: 75000, r: 1500, tier: 2 },
+    { id: "dist1", name: "Yolcu", text: "Toplam 10 km koş", k: "dist", n: 10000, r: 200, tier: 0 },
+    { id: "dist2", name: "Maratoncu", text: "Toplam 100 km koş", k: "dist", n: 100000, r: 1200, tier: 2 },
+    { id: "jump", name: "Yaylı Pati", text: "500 kez zıpla", k: "jump", n: 500, r: 200, tier: 0 },
+    { id: "slide", name: "Kaydırak", text: "250 kez kay", k: "slide", n: 250, r: 200, tier: 0 },
+    { id: "top", name: "Vagon Sörfçüsü", text: "Vagonların üstüne 50 kez çık", k: "ontop", n: 50, r: 250, tier: 0 },
+    { id: "tunnel", name: "Tünel Kaşifi", text: "30 tünelden geç", k: "tunnel", n: 30, r: 250, tier: 0 },
+    { id: "rocket", name: "Astronot", text: "15 roket topla", k: "rocket", n: 15, r: 300, tier: 1 },
+    { id: "box", name: "Sürpriz Sever", text: "20 sürpriz kutu aç", k: "box", n: 20, r: 300, tier: 1 },
+    { id: "shield", name: "Kalkan Ustası", text: "Kalkanla 10 çarpmayı engelle", k: "shieldblock", n: 10, r: 300, tier: 1 },
+    { id: "nohit", name: "Kusursuz", text: "2 dakika hiç çarpmadan koş", k: "nohit", n: 120, r: 500, tier: 1 },
+    { id: "runs", name: "Azimli", text: "50 koşu tamamla", k: "runs", n: 50, r: 400, tier: 1 },
+    { id: "quest", name: "Görev Ustası", text: "20 görev bitir", k: "quest", n: 20, r: 400, tier: 1 },
+    { id: "daily", name: "Sadık Dost", text: "7 gün üst üste gel", k: "streak", n: 7, r: 500, tier: 1 },
+    { id: "buy", name: "Koleksiyoncu", text: "Marketten 10 eşya al", k: "buys", n: 10, r: 800, tier: 2 }
+  ];
+  const MAXK = { run_score: 1, run_coins: 1, nohit: 1, streak: 1, buys: 1 };
+  const TIERS = [["#e8a06a", "#b8683a"], ["#e6ebf5", "#9aa3b8"], ["#ffd23f", "#e69500"]];
+  let stats = loadJSON("firtina-stats", {}), achSt = loadJSON("firtina-ach", {});
+  if (!stats.buys) stats.buys = Math.max(0, owned.size - 4);
+  function statEvent(k, v) {
+    const old = stats[k] || 0;
+    stats[k] = MAXK[k] ? Math.max(old, v) : old + v;
+    if (stats[k] === old) return;
+    questDirty = true;
+    for (const a of ACH) {
+      if (a.k !== k || achSt[a.id] || stats[k] < a.n) continue;
+      achSt[a.id] = 1; saveJSON("firtina-ach", achSt);
+      setTimeout(() => { toast("Yeni rozet: " + a.name + "!", "purple"); sfx.badge(); }, 500);
+      updateBadges();
+    }
+  }
+  function medalSvg(a, idx) {
+    const [c1, c2] = TIERS[a.tier];
+    return '<svg viewBox="0 0 46 46" aria-hidden="true"><path d="M13 2h8l3 10-6 3zM33 2h-8l-3 10 6 3z" fill="' + ["#ff5f8f", "#3b6cff", "#2bd6a8"][idx % 3] + '"/>' +
+      '<circle cx="23" cy="28" r="15" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="3"/><circle cx="23" cy="28" r="10.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>' +
+      '<path d="M23 20.5l2.3 4.7 5.2.7-3.8 3.6.9 5.1-4.6-2.4-4.6 2.4.9-5.1-3.8-3.6 5.2-.7z" fill="#fff"/></svg>';
+  }
+  function renderAch() {
+    $("aWallet").textContent = wallet.toLocaleString("tr-TR");
+    const got = ACH.filter(a => achSt[a.id]).length;
+    $("achSum").innerHTML = "<span>" + got + " / " + ACH.length + " rozet</span>" + '<div class="q-bar"><i style="width:' + (got / ACH.length * 100) + '%"></i></div>';
+    const order = a => achSt[a.id] === 1 ? 0 : !achSt[a.id] ? 1 : 2;
+    const list = ACH.map((a, i) => ({ a, i })).sort((x, y) => order(x.a) - order(y.a) || x.i - y.i);
+    $("achList").innerHTML = list.map(({ a, i }) => {
+      const st = achSt[a.id], v = Math.min(a.n, Math.floor(stats[a.k] || 0));
+      const fmt = n => (a.k === "dist" ? Math.floor(n / 1000 * 10) / 10 + " km" : n.toLocaleString("tr-TR"));
+      const btn = st === 2 ? '<span class="q-got">Alındı</span>' : st === 1 ? '<button class="q-claim" data-id="' + a.id + '"><i class="coin-ico"></i>' + a.r + " Al</button>" : '<span class="q-rew"><i class="coin-ico"></i>' + a.r + "</span>";
+      return '<div class="ach' + (st === 1 ? " done" : st === 2 ? " got" : " locked") + '"><span class="medal">' + medalSvg(a, i) + '</span><div class="q-main"><b>' + a.name + '</b><small style="color:#4b4880">' + a.text + "</small>" +
+        (st ? "" : '<div class="q-bar"><i style="width:' + (v / a.n * 100) + '%"></i></div><small>' + fmt(v) + " / " + fmt(a.n) + "</small>") + "</div>" + btn + "</div>";
+    }).join("");
+    updateBadges();
+  }
+  $("achList").addEventListener("click", e => {
+    const b = e.target.closest(".q-claim"); if (!b) return;
+    const a = ACH.find(x => x.id === b.dataset.id); if (!a || achSt[a.id] !== 1) return;
+    achSt[a.id] = 2; saveJSON("firtina-ach", achSt); addWallet(a.r); ensureAudio(); sfx.power(); setTimeout(sfx.coin, 200); renderAch();
+  });
   function tickQuests(dt) { questSaveT += dt; if (questDirty && questSaveT > 3) { questSaveT = 0; saveQuests(); } }
   function renderQuests() {
     ensureQuests();
@@ -2141,10 +2557,11 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     const ready = quests.list.filter(q => q.done && !q.claimed).length + (quests.list.every(q => q.claimed) && !quests.bonus ? 1 : 0);
     for (const id of ["dailyDot"]) $(id).hidden = !dAvail;
     for (const id of ["questDot", "questDot2"]) { $(id).hidden = ready === 0; $(id).textContent = ready; }
+    if (typeof achSt !== "undefined") { const ac = ACH.filter(a => achSt[a.id] === 1).length; $("achDot").hidden = ac === 0; $("achDot").textContent = ac; }
   }
   let toastT = null;
-  function toast(msg) {
-    const el = $("toast"); el.textContent = msg; el.hidden = false; el.classList.remove("show"); void el.offsetWidth; el.classList.add("show");
+  function toast(msg, cls) {
+    const el = $("toast"); el.textContent = msg; el.hidden = false; el.className = "toast" + (cls ? " " + cls : ""); void el.offsetWidth; el.classList.add("show");
     clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 2600);
   }
   let panelFrom = null;
@@ -2155,6 +2572,18 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   $("questBtn2").addEventListener("click", () => openPanel("questOv", "overOv", renderQuests));
   $("dailyClose").addEventListener("click", () => closePanel("dailyOv"));
   $("questClose").addEventListener("click", () => closePanel("questOv"));
+  $("achBtn").addEventListener("click", () => { ensureAudio(); openPanel("achOv", "startOv", renderAch); });
+  $("achClose").addEventListener("click", () => closePanel("achOv"));
+  // ayarlar paneli
+  function renderSettings() { for (const [id, k] of [["swSfx", "sfx"], ["swMusic", "music"], ["swVib", "vib"]]) $(id).setAttribute("aria-pressed", String(!!settings[k])); }
+  for (const [id, k] of [["swSfx", "sfx"], ["swMusic", "music"], ["swVib", "vib"]]) $(id).addEventListener("click", () => {
+    settings[k] = !settings[k]; saveSettings(); renderSettings(); syncMuteIcon(); ensureAudio();
+    if (k === "sfx" && settings.sfx) sfx.coin(); if (k === "vib" && settings.vib) buzz(40);
+  });
+  $("tutReset").addEventListener("click", () => { tut = {}; try { localStorage.removeItem("firtina-tut"); } catch (e) {} toast("Rehber bir sonraki koşuda yeniden gösterilecek"); });
+  $("setBtn").addEventListener("click", () => { ensureAudio(); openPanel("setOv", "startOv", renderSettings); });
+  $("pauseSet").addEventListener("click", () => openPanel("setOv", "pauseOv", renderSettings));
+  $("setClose").addEventListener("click", () => closePanel("setOv"));
   updateBadges();
   // gün içinde ilk açılışta günlük ödülü kendiliğinden göster
   setTimeout(() => { if (state === "demo" && !$("startOv").hidden && dailyState().available) openPanel("dailyOv", "startOv", renderDaily); }, 1200);
@@ -2173,11 +2602,12 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     }
     return h;
   }
+  const reach = (o, range) => o.vz ? range * (1 + o.vz / Math.max(8, speed)) : range;
   function hazardAhead(lane, range) {
     for (const o of obstacles) {
       if (o.lane !== lane || o.isRamp) continue;
       const z1 = o.z + o.len / 2, z0 = o.z - o.len / 2;
-      if (z1 < -range || z0 > 1.2) continue;
+      if (z1 < -reach(o, range) || z0 > 1.2) continue;
       if (o.type === "train") {
         const onTop = P.y >= o.top - 0.4 && laneOf(P.x) === lane;
         const hasRamp = obstacles.some(r => r.isRamp && r.lane === lane && Math.abs((r.z - r.len) - z1) < 0.5);
@@ -2190,7 +2620,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     for (const o of obstacles) {
       if (o.lane !== lane || o.type !== "train") continue;
       const z1 = o.z + o.len / 2, z0 = o.z - o.len / 2;
-      if (z1 > -range && z0 < 1.5) return true;
+      if (z1 > -reach(o, range) && z0 < 1.5) return true;
     }
     return false;
   }
@@ -2204,7 +2634,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     }
     if (!flying) for (const o of obstacles) {
       if (o.lane !== P.lane) continue;
-      const tta = -(o.z + o.len / 2) / (speed * boost);
+      const tta = -(o.z + o.len / 2) / (speed * boost + (o.vz || 0));
       if (o.type === "barrier" && tta > 0 && tta < 0.27) jump();
       if (o.type === "bar" && tta > 0 && tta < 0.3 && P.slide <= 0) slide();
     }
@@ -2229,26 +2659,48 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (P.inv > 0 || state === "falling") return;
     noHitT = 0;
     const lateral = Math.abs(P.x - P.lane * LANE) > 0.35;
-    if (lateral && o.type === "train") { P.lane = P.prevLane; shake = 0.25; P.wobble = 0.4; sfx.bump(); return; }
+    if (lateral && o.type === "train") { P.lane = P.prevLane; shake = 0.25; P.wobble = 0.4; sfx.bump(); buzz(30); return; }
+    if (P.shield > 0) {
+      P.shield = 0; P.inv = 1.5; shake = 0.35; P.wobble = 0.4; sfx.shield(); buzz(40); questEvent("shieldblock", 1);
+      for (let i = 0; i < 22; i++) emit(P.x, P.y + 1.0, 0.2, pick([0x5ff0d0, 0xffffff, 0x8ff4c8]), 0.45, rnd(-5, 5), rnd(-1, 5), rnd(-3, 3), 0.6, true);
+      return;
+    }
     if (P.board > 0) {
       P.board = 0; P.inv = 1.5; shake = 0.4; P.wobble = 0.5; sfx.crack();
       for (let i = 0; i < 16; i++) emit(P.x, P.y + 0.3, 0.2, pick(fox.boardDef.trail.concat([0xffffff])), 0.4, rnd(-4, 4), rnd(1, 5), rnd(-2, 3), 0.6, true);
       return;
     }
-    shake = 0.5; P.wobble = 0.8; sfx.hit();
+    shake = 0.5; P.wobble = 0.8; sfx.hit(); buzz(70);
     if (P.stumble > 0 && state === "play") { startFall(); return; }
-    P.stumble = WARN_T; P.inv = 1.3; speed = Math.max(12, speed * 0.8);
+    P.stumble = PMAX.warn = pdur("warn", 0) || WARN_T; P.inv = 1.3; speed = Math.max(12, speed * 0.8);
     if (state === "play") setTimeout(sfx.warn, 250);
   }
 
-  function activate(type) {
-    sfx.power(); questEvent("power", 1);
-    for (let i = 0; i < 14; i++) emit(P.x, P.y + 1.2, 0, type === "rocket" ? 0xffb020 : 0x8fd3ff, 0.5, rnd(-4, 4), rnd(-2, 5), rnd(-3, 3), 0.6, true);
-    if (type === "magnet") { P.magnet = MAGNET_T; return; }
-    P.rocket = ROCKET_T; P.landed = false; P.slide = 0; P.vy = 0; P.flip = false;
+  function openBox() {
+    const live = state === "play", k2 = abil().k === "box" ? 2 : 1;
+    sfx.box(); buzz(25); questEvent("box", 1);
+    for (let i = 0; i < 26; i++) emit(P.x, P.y + 1.3, 0, pick([0xff5f8f, 0xffd23f, 0x2bd6a8, 0x7b6cff, 0xffffff]), 0.4, rnd(-5, 5), rnd(1, 7), rnd(-3, 3), 0.8, true);
+    const r = Math.random();
+    if (r < 0.5) { const n = pick([20, 30, 40, 50, 75, 100]) * k2; coinCount += n; questEvent("coin", n); if (live) { score += n * 5; toast("Sürpriz kutu: +" + n + " altın!", "gold"); } }
+    else if (r < 0.78) { const t = pick(["double", "shield", "shoes", "magnet"].concat(tunnelNear() ? [] : ["rocket"])); if (live) toast("Sürpriz kutu: " + PNAME[t] + "!", "purple"); activate(t, true); }
+    else if (r < 0.92) { P.boardUses++; if (live) toast("Sürpriz kutu: +1 kaykay hakkı!", "purple"); }
+    else { const n = 150 * k2; coinCount += n; questEvent("coin", n); if (live) { score += n * 5; toast("BÜYÜK ÖDÜL: +" + n + " altın!", "gold"); } }
+  }
+  function activate(type, fromBox) {
+    if (type === "box") { openBox(); return; }
+    sfx.power(); questEvent("power", 1); if (type === "rocket") questEvent("rocket", 1);
+    if (state === "play" && !fromBox) { const key = "p_" + type; if (!tut[key] && PDESC[type]) { tut[key] = true; try { localStorage.setItem("firtina-tut", JSON.stringify(tut)); } catch (e) {} toast(PNAME[type] + ": " + PDESC[type]); } }
+    for (let i = 0; i < 14; i++) emit(P.x, P.y + 1.2, 0, PCOL[type], 0.5, rnd(-4, 4), rnd(-2, 5), rnd(-3, 3), 0.6, true);
+    if (type === "magnet") { P.magnet = PMAX.magnet = pdur("magnet", MAGNET_T); return; }
+    if (type === "double") { P.dbl = PMAX.dbl = pdur("dbl", DOUBLE_T); return; }
+    if (type === "shield") { P.shield = PMAX.shield = pdur("shield", SHIELD_T); return; }
+    if (type === "shoes") { P.shoes = PMAX.shoes = pdur("shoes", SHOES_T); return; }
+    const RT = PMAX.rocket = pdur("rocket", ROCKET_T);
+    removeTunnelsAhead();
+    P.rocket = RT; P.landed = false; P.slide = 0; P.vy = 0; P.flip = false;
     setTimeout(sfx.rocket, 150);
     let lane = P.lane, z = -14;
-    const n = Math.floor((ROCKET_T - 1.4) * Math.min(26, speed + 1) / 2.3);
+    const n = Math.floor((RT - 1.4) * Math.min(26, speed + 1) / 2.3);
     for (let i = 0; i < n; i++) {
       if (i && i % 9 === 0) lane = clamp(lane + pick([-1, 1]), -1, 1);
       addCoin(lane, FLY_Y + 0.9, z - i * 2.3);
@@ -2309,10 +2761,28 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     dist += dz;
 
     // dünya hareketi
+    let inTunnel = false;
     for (let i = obstacles.length - 1; i >= 0; i--) {
-      const o = obstacles[i]; o.z += dz; o.mesh.position.z = o.z;
+      const o = obstacles[i]; o.z += dz;
+      if (o.vz && o.z > -62 && !falling) {
+        if (!o.moving) { o.moving = true; if (live) sfx.horn(); }
+        o.z += o.vz * dt;
+        o.mesh.children.forEach(c => c.children.forEach(w => { if (w.geometry === wheelGeo) w.rotation.x -= dt * 14; }));
+      }
+      if (o.mover) {
+        o.x = Math.sin(time * o.mover.sp + o.mover.ph) * LANE; o.lane = Math.round(o.x / LANE); o.mesh.position.x = o.x;
+        o.mesh.children.forEach(c => { if (c.material === beaconM) c.visible = Math.sin(time * 12) > 0; });
+      }
+      if (o.type === "tunnel") {
+        if (o.z - o.len / 2 < 1 && o.z + o.len / 2 > -1) inTunnel = true;
+        if (!o.passed && o.z - o.len / 2 > 0.5) { o.passed = true; questEvent("tunnel", 1); }
+      }
+      if (o.type === "river") o.mesh.children.forEach(c => { if (c.userData.bob !== undefined) { c.position.y = 0.08 + Math.sin(time * 2.5 + c.userData.bob) * 0.05; c.rotation.y += dt * 0.3; } });
+      o.mesh.position.z = o.z;
       if (o.z - o.len > 14) { scene.remove(o.mesh); obstacles.splice(i, 1); }
     }
+    waterTex.offset.x += dt * 0.04;
+    hemi.intensity += ((inTunnel ? 0.55 : 1) * curTheme.hemi[2] - hemi.intensity) * Math.min(1, dt * 4);
     const magOn = P.magnet > 0 && !falling;
     for (let i = coins.length - 1; i >= 0; i--) {
       const c = coins[i]; c.z += dz;
@@ -2341,7 +2811,14 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       if (p.z > 12) { scene.remove(p.m); pickups.splice(i, 1); }
     }
     nextZ += dz; fillWorld();
-    for (const t of scenery) { t.obj.position.z += dz; if (t.obj.position.z > 30) { t.obj.position.z -= t.period; if (t.place) t.place(t); } }
+    const zones = obstacles.filter(o => o.decor);
+    for (const t of scenery) {
+      t.obj.position.z += dz; if (t.obj.position.z > 30) { t.obj.position.z -= t.period; if (t.place) t.place(t); }
+      if (t.kind) {
+        const tz = t.obj.position.z, pad = t.kind === "bld" ? 5 : 3;
+        t.obj.visible = !zones.some(o => (t.kind !== "over" || o.type === "tunnel") && Math.abs(tz - o.z) < o.len / 2 + pad);
+      }
+    }
     sleepers.position.z = dist % SLEEP;
     pillars.position.z = dist % PIL;
     walkTex.offset.y += dz / (400 / 160);
@@ -2355,6 +2832,9 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
 
     // güçlendirme süreleri
     if (P.magnet > 0) P.magnet -= dt;
+    if (P.dbl > 0 && !falling) P.dbl -= dt;
+    if (P.shield > 0 && !falling) P.shield -= dt;
+    if (P.shoes > 0 && !falling) P.shoes -= dt;
     if (P.board > 0 && !falling) P.board -= dt;
     if (demo && P.board <= 0 && P.rocket <= 0 && Math.random() < dt * 0.06) activateBoard(true);
     if (P.stumble > 0) P.stumble -= dt;
@@ -2373,6 +2853,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       P.vy -= 36 * dt; P.y += P.vy * dt; P.jumpT += dt;
       if (P.y <= g) { P.y = g; P.vy = 0; }
     } else { P.y = g; P.vy = 0; }
+    if (inTunnel && P.y > 5.4) { P.y = 5.4; if (P.vy > 0) P.vy = 0; }
     const onGround = P.rocket <= 0.8 && P.y <= g + 0.02;
     if (onGround && !lastGround) {
       P.land = 0.15; P.flip = false;
@@ -2390,12 +2871,14 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (P.rocket > 0) for (const s of [-1, 1]) {
       emit(P.x + s * 0.18, P.y + 0.35, 0.75, pick([0xffb020, 0xff6a20, 0xfff3a0]), 0.45, rnd(-.3, .3), rnd(-5, -3), rnd(1, 2), 0.35, true);
     }
+    if (P.shoes > 0 && P.rocket <= 0.8 && Math.random() < 0.5) emit(P.x + rnd(-.3, .3), P.y + 0.15, 0.2, pick([0xc3a6ff, 0xffffff]), 0.28, rnd(-.5, .5), rnd(.3, 1.2), rnd(.5, 1.5), 0.4, true);
+    if (P.dbl > 0 && Math.random() < 0.18) emit(P.x + rnd(-.5, .5), P.y + 2.6, 0, 0xffd23f, 0.3, 0, rnd(1, 2), 0, 0.5, true);
     if (magOn && Math.random() < 0.3) emit(P.x + rnd(-.6, .6), P.y + 3 + rnd(-.3, .3), rnd(-.3, .3), 0x8fd3ff, 0.25, 0, rnd(.5, 1.5), 0, 0.5, true);
 
     // çarpışma
     if (!falling) for (const o of obstacles) {
       if (o.isRamp) continue;
-      if (Math.abs(P.x - o.lane * LANE) > 1.15) continue;
+      if (o.decor || Math.abs(P.x - (o.mover ? o.x : o.lane * LANE)) > 1.15) continue;
       const z0 = o.z - o.len / 2, z1 = o.z + o.len / 2;
       if (z0 > 0.45 || z1 < -0.45) continue;
       if (o.type === "train" && P.y < o.top - 0.4) hit(o);
@@ -2407,13 +2890,14 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       if (c.taken) continue;
       const near = c.mag ? Math.hypot(c.x - P.x, c.y - (P.y + 0.9), c.z) < 1.0 : (Math.abs(c.z) < 0.8 && Math.abs(c.x - P.x) < 0.9 && Math.abs(c.y - (P.y + 0.9)) < 1.2);
       if (near) {
-        c.taken = true; coinCount++; if (live) score += 10 * mult(); sfx.coin(); questEvent("coin", 1);
+        c.taken = true; coinCount++; if (live) score += 10 * scoreMult(); sfx.coin(); questEvent("coin", 1);
+        if (abil().k === "coins" && live && ++bonusPick % 10 === 0) { coinCount++; questEvent("coin", 1); emit(P.x, P.y + 2.2, 0, 0xffe066, 0.6, 0, 2, 0, 0.6, true); }
         for (let i = 0; i < 3; i++) emit(c.x, c.y, c.z, 0xffe066, 0.3, rnd(-2, 2), rnd(1, 3), rnd(-1, 1), 0.35, true);
         const box = $("coinsBox"); box.classList.add("bump"); setTimeout(() => box.classList.remove("bump"), 120);
       }
     }
     if (live) {
-      score += dz * mult() * 0.8;
+      score += dz * scoreMult() * 0.8;
       noHitT += dt; questEvent("dist", dz); questEvent("nohit", Math.floor(noHitT));
       const onTop = onGround && g >= 3.2;
       if (onTop && !wasOnTop) questEvent("ontop", 1);
@@ -2498,8 +2982,16 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     f.g.rotation.z = -leanX * 0.12; f.g.rotation.y = -leanX * 0.12;
     f.g.visible = P.inv > 0 && !falling ? Math.floor(time * 14) % 2 === 0 : true;
   }
+  const shieldMesh = new THREE.Mesh(new THREE.SphereGeometry(1.2, 28, 18), new THREE.MeshBasicMaterial({ color: 0x5ff0d0, transparent: true, opacity: 0.1, depthWrite: false, blending: THREE.AdditiveBlending }));
+  const shieldRing = new THREE.Mesh(new THREE.TorusGeometry(1.22, 0.04, 8, 40), new THREE.MeshBasicMaterial({ color: 0x8ff4d8, transparent: true, opacity: 0.55, depthWrite: false, blending: THREE.AdditiveBlending }));
+  shieldMesh.add(shieldRing); shieldMesh.visible = false; scene.add(shieldMesh);
   function render(dt) {
     animateFox(dt);
+    shieldMesh.visible = P.shield > 0 && state !== "falling" && state !== "over" && (P.shield > 2 || Math.floor(time * 8) % 2 === 0);
+    if (shieldMesh.visible) {
+      shieldMesh.position.set(P.x, P.y + 1.05, 0); shieldMesh.scale.set(1, 1.12, 1).multiplyScalar(1 + Math.sin(time * 5) * 0.03);
+      shieldRing.rotation.set(Math.PI / 2 + Math.sin(time * 1.3) * 0.5, time * 2, 0);
+    }
     camX += (P.x * 0.7 - camX) * Math.min(1, dt * 6);
     const fly = P.y > 3.2;
     const ty = 4.1 + P.y * (fly ? 0.8 : 0.45);

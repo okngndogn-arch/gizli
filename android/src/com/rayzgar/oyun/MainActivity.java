@@ -80,9 +80,10 @@ public class MainActivity extends Activity implements Runnable {
     @Override
     public void onBackPressed() {
         String js = "(function(){var q=function(i){return document.getElementById(i)};"
-            + "var p=[['marketOv','mkClose'],['dailyOv','dailyClose'],['questOv','questClose']];"
+            + "var p=[['setOv','setClose'],['achOv','achClose'],['marketOv','mkClose'],['dailyOv','dailyClose'],['questOv','questClose']];"
             + "for(var i=0;i<p.length;i++){var o=q(p[i][0]);if(o&&!o.hidden){q(p[i][1]).click();return 'h';}}"
-            + "var st=q('stage');if(st&&!st.classList.contains('demo')&&q('pauseOv').hidden&&q('overOv').hidden){q('pauseBtn').click();return 'h';}"
+            + "var st=q('stage');if(st&&!st.classList.contains('demo')&&!q('pauseOv').hidden){q('resumeBtn').click();return 'h';}"
+            + "if(st&&!st.classList.contains('demo')&&q('pauseOv').hidden&&q('overOv').hidden){q('pauseBtn').click();return 'h';}"
             + "RayzgarApp.exitApp();return 'x';})()";
         web.evaluateJavascript(js, null);
     }
