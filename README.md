@@ -11,7 +11,7 @@ Oyunun tamamı tek bir dosyada: `index.html`. 3D çizim için [Three.js](https:/
 
 ## Android uygulaması (APK)
 
-Hazır APK: [`apk/Rayzgar-1.3.apk`](apk/Rayzgar-1.3.apk). Dosyayı telefona indirip aç. Android "bilinmeyen kaynaklardan yükleme" izni isteyebilir. Uygulama internet bağlantısı olmadan çalışır.
+Hazır APK: [`apk/Rayzgar-1.4.apk`](apk/Rayzgar-1.4.apk). Dosyayı telefona indirip aç. Android "bilinmeyen kaynaklardan yükleme" izni isteyebilir. Uygulama internet bağlantısı olmadan çalışır.
 
 `android/` klasörü uygulamanın kaynağıdır: oyunu tam ekran bir WebView'de açan küçük bir Android uygulaması. `android/assets/www/index.html`, oyunun internetsiz sürümüdür (Three.js ve yazı tipleri içine konmuştur). Gradle gerekmez, doğrudan Android SDK araçlarıyla derlenir:
 

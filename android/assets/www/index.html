@@ -1539,9 +1539,26 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       inner.rotation.set(0.25, 0.4, 0.1);
     }
     inner.traverse(o => { if (o.isMesh && !o.userData.noOutline && o.material !== outlineMat && !o.material.isMeshBasicMaterial) { const ol = new THREE.Mesh(o.geometry, outlineMat); ol.scale.setScalar(1.08); o.add(ol); } });
-    const halo = new THREE.Mesh(new THREE.SphereGeometry(0.75, 16, 12), glowMat); g2.add(halo);
-    const ring = new THREE.Mesh(new THREE.TorusGeometry(0.8, 0.05, 8, 32), new THREE.MeshBasicMaterial({ color: PCOL[type] })); ring.rotation.x = Math.PI / 2; g2.add(ring);
+    inner.scale.setScalar(1.35);
+    inner.traverse(o => { if (o.isMesh && o.material !== outlineMat) o.castShadow = true; });
+    // çember yerine üstünde ne olduğunu söyleyen etiket
+    const lab = new THREE.Sprite(labelMat(type)); lab.scale.set(2.9, 0.9, 1); lab.position.y = 1.45; g2.add(lab);
     return g2;
+  }
+  const PLABEL = { rocket: "ROKET", magnet: "MIKNATIS", double: "2 KAT PUAN", shield: "KALKAN", shoes: "SÜPER ZIPLA", box: "SÜRPRİZ" };
+  const labelMats = {};
+  function labelMat(type) {
+    if (labelMats[type]) return labelMats[type];
+    const c = document.createElement("canvas"); c.width = 320; c.height = 100;
+    const g = c.getContext("2d"), col = "#" + PCOL[type].toString(16).padStart(6, "0");
+    const rr = (x, y, w, h, r) => { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); };
+    g.font = "800 48px 'Baloo 2', Nunito, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle";
+    const tw = Math.min(300, g.measureText(PLABEL[type]).width + 44), x0 = (320 - tw) / 2;
+    rr(x0, 10, tw, 76, 38); g.fillStyle = "#1c1640"; g.fill();
+    rr(x0 + 5, 15, tw - 10, 66, 33); g.fillStyle = col; g.fill();
+    g.lineWidth = 7; g.strokeStyle = "#1c1640"; g.strokeText(PLABEL[type], 160, 52, 270); g.fillStyle = "#fff"; g.fillText(PLABEL[type], 160, 52, 270);
+    const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding;
+    return (labelMats[type] = new THREE.SpriteMaterial({ map: t, transparent: true, depthWrite: false }));
   }
   function addPickup(type, lane, z) {
     const m = makePickup(type); m.position.set(lane * LANE, 1.2, z); scene.add(m);
@@ -1781,11 +1798,13 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   function coinArc(lane, zc) { for (let o = -6; o <= 6; o += 2) addCoin(lane, 0.9 + 2.1 * (1 - Math.pow(o / 7, 2)), zc + o); }
 
   let nextZ = -30, sectionsMade = 0, lastSecTunnel = false;
+  // zorluk: koşu ilerledikçe 0'dan 1'e çıkar (yaklaşık 2,5 dakikada tam zorluk)
+  const diff = () => state === "play" ? clamp(playTime / 150, 0, 1) : 0;
   function spawnSection(z) {
     sectionsMade++; lastSecTunnel = false;
-    const k = Math.random();
-    if (sectionsMade > 3 && k < 0.09) return spawnOncoming(z);
-    if (sectionsMade > 3 && k < 0.18) return spawnMovers(z);
+    const k = Math.random(), d = diff();
+    if (sectionsMade > 3 && k < 0.09 + 0.08 * d) return spawnOncoming(z);
+    if (sectionsMade > 3 && k < 0.18 + 0.14 * d) return spawnMovers(z);
     const used = spawnCore(z);
     const covered = coveredBy(z + 4, z - used - 4);
     if (covered) lastSecTunnel = covered === "tunnel";
@@ -1801,16 +1820,17 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   function spawnCore(z) {
     const lanes = [-1, 0, 1], L = pick(lanes);
     let r = Math.random();
+    const d = diff();
     if (sectionsMade <= 1) r = 0;
-    if (r < 0.2) { coinLine(L, z, 10); return 24; }
+    if (r < 0.2 * (1 - 0.65 * d)) { coinLine(L, z, 10); return 24; }
     if (r < 0.4) {
-      const bl = [L]; if (Math.random() < 0.5) bl.push(pick(lanes.filter(l => l !== L)));
+      const bl = [L]; if (Math.random() < 0.5 + 0.4 * d) bl.push(pick(lanes.filter(l => l !== L)));
       bl.forEach(l => makeBarrier(l, z - 7));
       coinArc(L, z - 7);
       return 16;
     }
     if (r < 0.56) {
-      const bl = [L]; if (Math.random() < 0.4) bl.push(pick(lanes.filter(l => l !== L)));
+      const bl = [L]; if (Math.random() < 0.4 + 0.45 * d) bl.push(pick(lanes.filter(l => l !== L)));
       bl.forEach(l => makeBar(l, z - 6));
       coinLine(L, z - 2, 4, 0.6, 1.6);
       return 14;
@@ -1820,7 +1840,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     makeTrain(L, near - len / 2, n);
     if (ramp) { makeRamp(L, z); coinLine(L, near - 1, Math.floor(len / 2.2), 4.2); }
     const others = lanes.filter(l => l !== L);
-    if (Math.random() < 0.5) {
+    if (Math.random() < 0.5 + 0.4 * d) {
       const L2 = pick(others), len2 = 2 * 4.2 + 0.4;
       makeTrain(L2, z - 5 - len2 / 2, 2);
       coinLine(others.find(l => l !== L2), z, 8);
@@ -1828,7 +1848,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     return (ramp ? 4 : 0) + len + 4;
   }
   function maybePickup(z, used) {
-    if (sectionsMade < 3 || P.rocket > 0 || Math.random() > 0.24) return;
+    if (sectionsMade < 4 || P.rocket > 0 || Math.random() > 0.11) return;
     const free = [-1, 0, 1].filter(l => !obstacles.some(o => o.lane === l && o.type === "train" && o.z + o.len / 2 > z - used && o.z - o.len / 2 < z + 2));
     if (!free.length) return;
     const lane = pick(free);
@@ -1837,7 +1857,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (lastSecTunnel && r < 0.18) return;
     addPickup(r < 0.18 ? "rocket" : r < 0.36 ? "magnet" : r < 0.53 ? "double" : r < 0.69 ? "shield" : r < 0.84 ? "shoes" : "box", lane, z - 2);
   }
-  function fillWorld() { while (nextZ > -170) { const z = nextZ, used = spawnSection(z); maybePickup(z, used); nextZ -= used + rnd(8, 13); } }
+  function fillWorld() { while (nextZ > -170) { const z = nextZ, used = spawnSection(z); maybePickup(z, used); const d = diff(); nextZ -= used + rnd(8 - 4.5 * d, 13 - 6 * d); } }
 
   // ---------- dünyalar (arka plan temaları) ----------
   // price: şimdilik hepsi 0 (ücretsiz).
@@ -2765,7 +2785,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     P.rocket = RT; P.landed = false; P.slide = 0; P.vy = 0; P.flip = false;
     setTimeout(sfx.rocket, 150);
     let lane = P.lane, z = -14;
-    const n = Math.floor((RT - 1.4) * Math.min(26, speed + 1) / 2.3);
+    const n = Math.floor((RT - 1.4) * Math.min(34, speed + 1) / 2.3);
     for (let i = 0; i < n; i++) {
       if (i && i % 9 === 0) lane = clamp(lane + pick([-1, 1]), -1, 1);
       addCoin(lane, FLY_Y + 0.9, z - i * 2.3);
@@ -2819,7 +2839,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     time += dt;
     const live = state === "play" && !paused, demo = state === "demo", falling = state === "falling";
     if (!live && !demo && !falling) return;
-    if (live) { playTime += dt; speed = Math.min(26, speed + dt * 0.18); }
+    if (live) { playTime += dt; speed = Math.min(34, speed + dt * 0.26); }
     else if (demo) speed = 15;
     else { speed = Math.max(0, speed - dt * 22); fallT += dt; if (fallT > 1.5) showOver(); }
     boost += ((P.board > 0 && !falling ? 1.45 : 1) - boost) * Math.min(1, dt * 3);
@@ -2878,8 +2898,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
       const p = pickups[i]; p.z += dz;
       p.m.position.set(p.lane * LANE, 1.2 + Math.sin(time * 3 + i) * 0.15, p.z);
       p.m.children[0].rotation.y = time * 2.5;
-      p.m.children[2].rotation.z = time * 2;
-      p.m.children[1].scale.setScalar(1 + Math.sin(time * 6) * 0.08);
+      p.m.children[1].position.y = 1.45 + Math.sin(time * 4 + i) * 0.06;
       if (!falling && Math.abs(p.z) < 1 && Math.abs(p.lane * LANE - P.x) < 1 && Math.abs(1.2 - (P.y + 0.9)) < 1.6) {
         activate(p.type); scene.remove(p.m); pickups.splice(i, 1); continue;
       }
