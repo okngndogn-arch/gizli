@@ -6,8 +6,8 @@ cd "$(dirname "$0")"
 SDK="${ANDROID_HOME:?ANDROID_HOME gerekli}"
 BT="$SDK/build-tools/34.0.0"
 PJ="$SDK/platforms/android-34/android.jar"
-VERSION_CODE="${VERSION_CODE:-5}"
-VERSION_NAME="${VERSION_NAME:-1.4}"
+VERSION_CODE="${VERSION_CODE:-6}"
+VERSION_NAME="${VERSION_NAME:-1.5}"
 rm -rf build && mkdir -p build/gen build/classes build/dex
 "$BT/aapt2" compile --dir res -o build/res.zip
 "$BT/aapt2" link -o build/base.apk -I "$PJ" --manifest AndroidManifest.xml -A assets \

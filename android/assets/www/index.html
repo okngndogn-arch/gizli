@@ -1799,7 +1799,9 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
 
   let nextZ = -30, sectionsMade = 0, lastSecTunnel = false;
   // zorluk: koşu ilerledikçe 0'dan 1'e çıkar (yaklaşık 2,5 dakikada tam zorluk)
-  const diff = () => state === "play" ? clamp(playTime / 150, 0, 1) : 0;
+  // zorluk skora bağlı: 0 puanda 0, ~5.000'de 0,4, ~20.000'de 0,66, 100.000 ve üstünde 1
+  const diff = () => state === "play" ? clamp(Math.log10(1 + score / 1000) / Math.log10(101), 0, 1) : 0;
+  let level = 1;
   function spawnSection(z) {
     sectionsMade++; lastSecTunnel = false;
     const k = Math.random(), d = diff();
@@ -1826,6 +1828,8 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     if (r < 0.4) {
       const bl = [L]; if (Math.random() < 0.5 + 0.4 * d) bl.push(pick(lanes.filter(l => l !== L)));
       bl.forEach(l => makeBarrier(l, z - 7));
+      // yüksek skorda üçüncü şeride de "eğil" tabelası: her şerit geçilebilir ama hızlı karar gerekir
+      if (bl.length === 2 && d > 0.45 && Math.random() < 0.6 * d) makeBar(lanes.find(l => !bl.includes(l)), z - 7);
       coinArc(L, z - 7);
       return 16;
     }
@@ -2286,7 +2290,7 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
   stage.addEventListener("pointerdown", () => ensureAudio(), { once: true });
   function startGame() {
     ensureAudio();
-    resetGame(); banked = 0; hideCoach(); timeScale = 1; boardHintShown = false; noHitT = 0; wasOnTop = false; ensureQuests();
+    resetGame(); banked = 0; level = 1; hideCoach(); timeScale = 1; boardHintShown = false; noHitT = 0; wasOnTop = false; ensureQuests();
     $("marketOv").hidden = true;
     state = "play"; paused = false;
     if (abil().k === "startShield") { P.shield = PMAX.shield = abil().v; }
@@ -2839,7 +2843,14 @@ body { background: radial-gradient(800px 600px at 50% 0%, #2d2170, var(--page));
     time += dt;
     const live = state === "play" && !paused, demo = state === "demo", falling = state === "falling";
     if (!live && !demo && !falling) return;
-    if (live) { playTime += dt; speed = Math.min(34, speed + dt * 0.26); }
+    if (live) {
+      playTime += dt;
+      // skor arttıkça hız sınırı yükselir: 0 puanda 19, en yüksek zorlukta 38
+      const d = diff(), cap = 19 + 19 * d;
+      speed = speed < cap ? Math.min(cap, speed + dt * (0.35 + (cap - speed) * 0.04)) : speed;
+      const lv = 1 + Math.floor(d * 5 + 0.0001);
+      if (lv > level) { level = lv; toast("Seviye " + lv + ": daha hızlı, daha zor!", "purple"); sfx.power(); }
+    }
     else if (demo) speed = 15;
     else { speed = Math.max(0, speed - dt * 22); fallT += dt; if (fallT > 1.5) showOver(); }
     boost += ((P.board > 0 && !falling ? 1.45 : 1) - boost) * Math.min(1, dt * 3);
